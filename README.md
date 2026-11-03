@@ -1,9 +1,12 @@
 # Country Maternal-Child Health Profile Segmentation Using Unsupervised Learning
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-brightgreen?logo=github&style=for-the-badge)](https://mayank0053.github.io/Country-Maternal-Child-Health-Profile-Segmentation-Dashboard--/)
 [![Python 3.11](https://img.shields.io/badge/Python-3.11-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Scikit-Learn](https://img.shields.io/badge/scikit--learn-1.3%2B-orange.svg)](https://scikit-learn.org/)
 [![DHS Program](https://img.shields.io/badge/Data-USAID%20DHS%20Program-green.svg)](https://dhsprogram.com/)
+
+> 🌐 **Interactive Live Dashboard:** [https://mayank0053.github.io/Country-Maternal-Child-Health-Profile-Segmentation-Dashboard--/](https://mayank0053.github.io/Country-Maternal-Child-Health-Profile-Segmentation-Dashboard--/)
 
 ---
 
