@@ -7,14 +7,14 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 > 🏛️ **Organization / Problem Statement:** Bill & Melinda Gates Foundation  
-> 👤 **Sole Contributor:** Mayank | **Registration Number:** 12404505  
+> 👤 **Sole Contributor:** Mayank Chawla | **Registration Number:** 12404505  
 > 🌐 **Interactive Live Dashboard:** [https://mayank0053.github.io/Country-Maternal-Child-Health-Profile-Segmentation-Dashboard--/](https://mayank0053.github.io/Country-Maternal-Child-Health-Profile-Segmentation-Dashboard--/)  
 > ⚡ **Dynamic FastAPI Backend Server:** `http://127.0.0.1:8000` (Interactive Swagger Docs: `http://127.0.0.1:8000/docs`)
 
 ---
 
 ## Academic & Faculty Verification Notice
-This project is an **Individual Project** conceived, implemented, tested, and documented by **Mayank (Reg No: 12404505)**. 
+This project is an **Individual Project** conceived, implemented, tested, and documented by **Mayank Chawla (Reg No: 12404505)**. 
 
 ### Direct Source & Preprocessed Datasets (In Root Directory):
 For rapid faculty review and independent analysis, the un-imputed survey extract and preprocessed datasets have been placed **directly in the main project directory**:
@@ -180,7 +180,7 @@ unsupervised learning project/
 ---
 
 ## Individual Contribution Statement
-* **Student Name:** Mayank
+* **Student Name:** Mayank Chawla
 * **Registration Number:** 12404505
 * **Target Foundation:** Bill & Melinda Gates Foundation
 * **Declaration:** This project was conceived, designed, developed, and evaluated **100% individually as a single-author submission**. All components—including REST API ingestion, statistical preprocessing, mathematical modeling, dynamic FastAPI backend, light-themed web analytics, and formal documentation—were authored by the student.

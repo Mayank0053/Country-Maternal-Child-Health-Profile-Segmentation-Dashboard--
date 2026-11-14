@@ -209,7 +209,7 @@ def build_pdf_report(output_filename="Country_MCH_Segmentation_Project_Report.pd
 
     meta_table_data = [
         [Paragraph("Project Ownership:", meta_label), Paragraph("<b>100% Individual Project (Sole Contributor)</b>", meta_val)],
-        [Paragraph("Student Name:", meta_label), Paragraph("<b>Mayank</b>", meta_val)],
+        [Paragraph("Student Name:", meta_label), Paragraph("<b>Mayank Chawla</b>", meta_val)],
         [Paragraph("Student Registration Number:", meta_label), Paragraph("<b>12404505</b>", meta_val)],
         [Paragraph("Target Organization / Problem Statement:", meta_label), Paragraph("<b>Bill & Melinda Gates Foundation</b>", meta_val)],
         [Paragraph("Dynamic Backend Server:", meta_label), Paragraph("FastAPI Server (<code>app.py</code>) running at <code>http://127.0.0.1:8000</code>", meta_val)],
@@ -234,7 +234,7 @@ def build_pdf_report(output_filename="Country_MCH_Segmentation_Project_Report.pd
     story.append(Spacer(1, 16))
 
     exec_summary_text = (
-        "<b>Executive Declaration & Abstract:</b> This project is an individual project completed entirely by Mayank "
+        "<b>Executive Declaration & Abstract:</b> This project is an individual project completed entirely by Mayank Chawla "
         "(Registration Number: 12404505). It develops an end-to-end, dynamic full-stack machine learning framework to "
         "segment 78 developing nations into defensible maternal and child health (MCH) typologies. Departing from static "
         "visualizations, the project integrates a high-performance <b>FastAPI dynamic backend server</b> supporting real-time "
@@ -544,7 +544,7 @@ def build_pdf_report(output_filename="Country_MCH_Segmentation_Project_Report.pd
     contrib_data = [
         [Paragraph("Contributor Name", table_header_style), Paragraph("Registration Number", table_header_style), Paragraph("100% Individual Contributions & Responsibilities", table_header_style)],
         [
-            Paragraph("<b>Mayank</b><br/><br/><font color='#D97706'><b>Sole Contributor</b></font>", table_cell_style),
+            Paragraph("<b>Mayank Chawla</b><br/><br/><font color='#D97706'><b>Sole Contributor</b></font>", table_cell_style),
             Paragraph("<b>12404505</b>", table_cell_center),
             Paragraph(
                 "• <b>Academic Declaration:</b> Conceived, designed, implemented, and tested this project entirely individually.<br/>"

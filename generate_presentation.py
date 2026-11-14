@@ -2,7 +2,8 @@
 Generates the updated professional PPTX presentation for the
 Country Maternal-Child Health Profile Segmentation project.
 Explicitly highlights Individual Project Ownership, the dynamic non-static
-FastAPI backend architecture, and root preprocessed data availability.
+FastAPI backend architecture, root preprocessed data availability,
+and includes the 2 new concluding slides with author sign-off.
 """
 
 import os
@@ -80,7 +81,7 @@ def create_deck():
             p.text = f"• {item}"
             p.font.size = Pt(10.5)
             p.font.color.rgb = TEXT_DARK
-            p.space_before = Pt(7)
+            p.space_before = Pt(6)
 
     # -------------------------------------------------------------
     # SLIDE 1: TITLE SLIDE (Explicit Individual Project Notice)
@@ -126,13 +127,13 @@ def create_deck():
     tf_det.word_wrap = True
 
     p_det1 = tf_det.paragraphs[0]
-    p_det1.text = "Sole Contributor: Mayank | Registration Number: 12404505"
+    p_det1.text = "Sole Contributor: Mayank Chawla | Registration Number: 12404505"
     p_det1.font.size = Pt(16)
     p_det1.font.bold = True
     p_det1.font.color.rgb = WHITE
 
     p_det2 = tf_det.add_paragraph()
-    p_det2.text = "Declaration: This project was conceived, implemented, tested, and deployed entirely individually."
+    p_det2.text = "Academic Declaration: Conceived, designed, implemented, and tested 100% individually as an individual submission."
     p_det2.font.size = Pt(11)
     p_det2.font.bold = True
     p_det2.font.color.rgb = RGBColor(186, 230, 253)
@@ -163,7 +164,7 @@ def create_deck():
                  "Challenge: How can global health agencies segment sovereign nations into actionable, defensible health typologies without relying on misleading univariate indices?",
                  "Data Source: USAID Demographic and Health Surveys (DHS) Program open survey indicators spanning child mortality, maternal care, nutrition, and family planning.",
                  "Solution: A dynamic, end-to-end machine learning system with multi-k K-Means, Manhattan distance comparison, PCA dimensionality reduction, and quantitative metric validation (WCSS, Silhouette, Davies-Bouldin).",
-                 "Execution: 100% individual project execution by Mayank (Reg No: 12404505)."
+                 "Execution: 100% individual project execution by Mayank Chawla (Reg No: 12404505)."
              ], badge_text="Foundation Mandate")
 
     # -------------------------------------------------------------
@@ -358,8 +359,8 @@ def create_deck():
     add_header(slide11, "Individual Project Ownership & Sole Contributions", "ACADEMIC DECLARATION: 100% INDIVIDUAL PROJECT")
 
     add_card(slide11, Inches(0.8), Inches(1.7), Inches(11.7), Inches(5.2),
-             "Sole Contributor: Mayank | Registration Number: 12404505", [
-                 "Academic Declaration: This project is an individual project completed entirely by Mayank (12404505) with 100% individual responsibility across all project phases.",
+             "Sole Contributor: Mayank Chawla | Registration Number: 12404505", [
+                 "Academic Declaration: This project is an individual project completed entirely by Mayank Chawla (12404505) with 100% individual responsibility across all project phases.",
                  "Problem Formulation: Conceptualized the maternal-child health segmentation methodology for the Bill & Melinda Gates Foundation, translating SDG 3 targets into 13 measurable DHS survey features.",
                  "Data Ingestion & Preprocessing: Designed and programmed src/data_loader.py (REST API integration) and src/preprocessing.py (Region-Stratified Median Imputation and StandardScaler); exported SOURCE_DHS_RAW_DATA.csv and PREPROCESSED_MCH_CLEAN.csv to root.",
                  "Machine Learning & Mathematical Modeling: Implemented multi-k K-Means, Manhattan K-Medoids from scratch (PAM algorithm), and PCA eigenvalue decomposition in src/clustering.py.",
@@ -427,9 +428,82 @@ def create_deck():
                  "7. MacQueen, J. (1967). Some methods for classification and analysis of multivariate observations. Proc. 5th Berkeley Symp. Math. Statist. Prob., 1, 281-297."
              ], badge_text="Scientific Grounding")
 
+    # -------------------------------------------------------------
+    # SLIDE 15: NEW SLIDE 1 - SUMMARY OF ENHANCEMENTS & FACULTY CHANGES
+    # -------------------------------------------------------------
+    slide15 = prs.slides.add_slide(blank_layout)
+    add_header(slide15, "Summary of Key Project Enhancements & Faculty-Directed Changes", "SYSTEM ENHANCEMENTS SUMMARY")
+
+    add_card(slide15, Inches(0.8), Inches(1.7), Inches(5.6), Inches(5.2),
+             "Dynamic Non-Static Full-Stack Architecture", [
+                 "Transition from Static to Dynamic: Converted the application from a client-only static page into a full-stack dynamic platform powered by a dedicated Python FastAPI backend server (app.py).",
+                 "Real-Time Server-Side Clustering: Integrated POST /api/cluster/run allowing users to execute clustering dynamically with arbitrary k (2 to 8) and distance metrics (Euclidean / Manhattan), computing live metrics.",
+                 "Country Typology Simulator: Built POST /api/predict enabling faculty to enter hypothetical indicator values and receive immediate server-computed cluster classifications and tailored interventions.",
+                 "Interactive OpenAPI Documentation: Exposed live Swagger API testing at http://127.0.0.1:8000/docs."
+             ], badge_text="Architecture Upgrades")
+
+    add_card(slide15, Inches(6.8), Inches(1.7), Inches(5.6), Inches(5.2),
+             "Data Transparency & Light-Themed Web Analytics", [
+                 "Main Root Data Placement: Directly placed SOURCE_DHS_RAW_DATA.csv (84 countries raw) and PREPROCESSED_MCH_CLEAN.csv (78 countries clean) in the root directory for immediate faculty review.",
+                 "Faculty Preprocessing Guide: Authored DATA_PREPROCESSING_INSPECTION_GUIDE.md detailing missingness handling, Region-Stratified Median Imputation, and summary statistics.",
+                 "Light-Colored Theme Redesign: Redesigned the entire web dashboard to a strict, professional light theme (pure white cards, light slate background, deep navy typography, medical cyan accents).",
+                 "Faculty Inspector Tab: Added an interactive client-side data viewer with live view toggling between Raw, Clean, and Scaled matrices."
+             ], badge_text="Faculty Review & UI")
+
+    # -------------------------------------------------------------
+    # SLIDE 16: NEW SLIDE 2 - FINAL SIGN-OFF & INDIVIDUAL SUBMISSION
+    # -------------------------------------------------------------
+    slide16 = prs.slides.add_slide(blank_layout)
+    add_header(slide16, "Project Conclusion, Submission Metadata & Final Sign-Off", "FINAL SUBMISSION & VERIFICATION")
+
+    # Deliverables Verification Card
+    add_card(slide16, Inches(0.8), Inches(1.6), Inches(11.7), Inches(3.6),
+             "Comprehensive Deliverables & System Verification", [
+                 "Complete Codebase: Modular architecture in src/ (data_loader.py, preprocessing.py, clustering.py, evaluation.py, stability.py, visualization.py) and app.py dynamic server.",
+                 "Verified Execution: 1-click startup via run_dynamic_app.bat (FastAPI server + light dashboard) and run_pipeline.py CLI.",
+                 "Academic Documentation: Formal 12-page PDF Project Report and 16-slide Presentation Deck adhering to all 10 mandatory submission sections.",
+                 "Submission Archive: Completely packaged self-contained ZIP file (12404505.zip) containing all 54 project files ready for UMS upload.",
+                 "Cloud & Local Access: Live on GitHub Pages (https://mayank0053.github.io/Country-Maternal-Child-Health-Profile-Segmentation-Dashboard--/) and GitHub repository synced."
+             ], badge_text="Verified Status")
+
+    # Prominent Signature Card at the bottom with spacious layout
+    sig_shape = slide16.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(5.4), Inches(11.7), Inches(1.5))
+    sig_shape.fill.solid()
+    sig_shape.fill.fore_color.rgb = RGBColor(239, 246, 255)  # Light blue/white accent
+    sig_shape.line.color.rgb = PRIMARY_BLUE
+    sig_shape.line.width = Pt(2.0)
+
+    sig_tb = slide16.shapes.add_textbox(Inches(1.0), Inches(5.5), Inches(11.3), Inches(1.3))
+    sig_tf = sig_tb.text_frame
+    sig_tf.word_wrap = True
+    sig_tf.margin_left = sig_tf.margin_top = sig_tf.margin_right = sig_tf.margin_bottom = 0
+
+    p_sig_title = sig_tf.paragraphs[0]
+    p_sig_title.text = "ACADEMIC SUBMISSION & AUTHOR SIGN-OFF"
+    p_sig_title.font.size = Pt(11)
+    p_sig_title.font.bold = True
+    p_sig_title.font.color.rgb = ACCENT_BLUE
+    p_sig_title.alignment = PP_ALIGN.CENTER
+
+    # Exact requested text with generous, elegant spacing
+    p_sig_main = sig_tf.add_paragraph()
+    p_sig_main.text = "Mayank Chawla , 12404505 , Individual"
+    p_sig_main.font.size = Pt(24)
+    p_sig_main.font.bold = True
+    p_sig_main.font.color.rgb = NAVY
+    p_sig_main.alignment = PP_ALIGN.CENTER
+    p_sig_main.space_before = Pt(6)
+
+    p_sig_sub = sig_tf.add_paragraph()
+    p_sig_sub.text = "Bill & Melinda Gates Foundation | Unsupervised Learning Final Project Submission"
+    p_sig_sub.font.size = Pt(11)
+    p_sig_sub.font.color.rgb = TEXT_MUTED
+    p_sig_sub.alignment = PP_ALIGN.CENTER
+    p_sig_sub.space_before = Pt(4)
+
     output_path = "Country_MCH_Segmentation_Presentation.pptx"
     prs.save(output_path)
-    print(f"Updated presentation successfully created at: {output_path}")
+    print(f"Updated 16-slide presentation successfully created at: {output_path}")
 
 if __name__ == "__main__":
     create_deck()
