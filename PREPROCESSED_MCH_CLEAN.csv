@@ -1,0 +1,79 @@
+CountryName,BCG_Vaccination_Rate,Measles_Vaccination_Rate,Infant_Mortality_Rate,Neonatal_Mortality_Rate,Under5_Mortality_Rate,Exclusive_Breastfeeding_Rate,Child_Stunting_Rate,Child_Wasting_Rate,Adolescent_Fertility_Rate,Total_Fertility_Rate,Modern_Contraceptive_Rate,Antenatal_Care_Skilled_Provider,Skilled_Birth_Attendance,Latest_Survey_Year,DHS_CountryCode,ISO3_CountryCode,RegionName,SubregionName,Region_RegionName_Central_Asia,Region_RegionName_Latin_America_and_Caribbean,Region_RegionName_North_Africa/West_Asia/Europe,Region_RegionName_Oceania,Region_RegionName_South_and_Southeast_Asia,Region_RegionName_Sub-Saharan_Africa
+Afghanistan,73.7,59.9,45.0,22.0,55.0,43.3,27.0,9.35,78.0,5.3,19.8,59.1,54.2,2015,AF,AFG,South & Southeast Asia,South Asia,0.0,0.0,0.0,0.0,1.0,0.0
+Albania,93.4,94.0,18.0,11.5,22.0,37.4,11.3,1.6,20.0,1.8,3.7,89.1,99.8,2017,AL,ALB,North Africa/West Asia/Europe,Southern Europe,0.0,0.0,1.0,0.0,0.0,0.0
+Angola,67.3,49.9,32.0,16.0,52.0,32.7,39.9,5.2,122.0,4.8,14.9,77.9,50.8,2023,AO,AGO,Sub-Saharan Africa,Middle Africa,0.0,0.0,0.0,0.0,0.0,1.0
+Armenia,99.0,92.8,4.0,3.0,6.0,44.5,9.4,4.2,24.0,1.7,28.0,99.7,99.7,2016,AM,ARM,North Africa/West Asia/Europe,West Asia,0.0,0.0,1.0,0.0,0.0,0.0
+Azerbaijan,80.1,67.3,43.0,28.0,50.0,14.5,25.1,6.8,33.0,2.0,14.3,79.2,89.3,2006,AZ,AZE,North Africa/West Asia/Europe,West Asia,0.0,0.0,1.0,0.0,0.0,0.0
+Bangladesh,89.4,81.15,27.0,22.0,32.0,53.3,23.6,11.0,92.0,2.3,54.7,87.6,68.7,2022,BD,BGD,South & Southeast Asia,South Asia,0.0,0.0,0.0,0.0,1.0,0.0
+Benin,88.2,66.8,55.0,30.0,96.0,41.5,32.2,5.0,108.0,5.7,12.4,83.0,79.3,2017,BJ,BEN,Sub-Saharan Africa,Western Africa,0.0,0.0,0.0,0.0,0.0,1.0
+Bolivia,98.4,90.4,50.0,27.0,63.0,61.2,27.1,1.4,88.0,3.5,34.6,90.0,72.8,2008,BO,BOL,Latin America & Caribbean,South America,0.0,1.0,0.0,0.0,0.0,0.0
+Botswana,91.9,79.5,38.0,23.0,53.0,31.3,29.75,5.4,129.0,4.9,31.7,91.9,78.9,1988,BT,BWA,Sub-Saharan Africa,Southern Africa,0.0,0.0,0.0,0.0,0.0,1.0
+Brazil,92.6,91.9,39.0,19.0,49.0,29.4,12.9,2.7,86.0,2.5,70.3,87.9,87.3,1996,BR,BRA,Latin America & Caribbean,South America,0.0,1.0,0.0,0.0,0.0,0.0
+Burkina Faso,96.0,89.5,30.0,18.0,48.0,51.3,22.6,10.6,93.0,4.4,31.5,98.3,95.7,2021,BF,BFA,Sub-Saharan Africa,Western Africa,0.0,0.0,0.0,0.0,0.0,1.0
+Burundi,97.7,93.8,47.0,23.0,78.0,82.8,55.9,5.1,58.0,5.5,22.9,99.3,86.2,2016,BU,BDI,Sub-Saharan Africa,Eastern Africa,0.0,0.0,0.0,0.0,0.0,1.0
+Cambodia,93.8,83.1,12.0,8.0,16.0,50.3,21.9,9.6,48.0,2.7,44.7,98.7,98.7,2021,KH,KHM,South & Southeast Asia,Southeast Asia,0.0,0.0,0.0,0.0,1.0,0.0
+Central African Republic,77.2,52.4,97.0,42.0,158.0,3.0,39.1,9.3,155.0,5.1,3.2,66.4,45.3,1994,CF,CAF,Sub-Saharan Africa,Middle Africa,0.0,0.0,0.0,0.0,0.0,1.0
+Chad,59.6,62.5,72.0,34.0,133.0,0.3,39.9,13.0,179.0,6.4,5.0,66.3,26.9,2014,TD,TCD,Sub-Saharan Africa,Middle Africa,0.0,0.0,0.0,0.0,0.0,1.0
+Colombia,94.15,74.4,14.0,9.0,16.0,31.15,20.1,1.7,75.0,2.0,75.9,97.5,96.8,2015,CO,COL,Latin America & Caribbean,South America,0.0,1.0,0.0,0.0,0.0,0.0
+Comoros,83.8,75.3,36.0,24.0,50.0,12.1,30.1,11.1,70.0,4.3,14.2,92.3,85.0,2012,KM,COM,Sub-Saharan Africa,Eastern Africa,0.0,0.0,0.0,0.0,0.0,1.0
+Congo,94.5,81.1,39.0,22.0,68.0,20.2,24.4,5.9,147.0,5.1,20.0,85.6,84.5,2011,CG,COG,Sub-Saharan Africa,Middle Africa,0.0,0.0,0.0,0.0,0.0,1.0
+Congo Democratic Republic,69.2,55.7,56.0,24.0,93.0,52.3,44.7,7.2,91.0,5.5,10.7,84.0,84.9,2023,CD,COD,Sub-Saharan Africa,Middle Africa,0.0,0.0,0.0,0.0,0.0,1.0
+Cote d'Ivoire,87.3,65.1,52.0,30.0,74.0,34.0,23.4,8.4,96.0,4.3,17.9,95.2,84.0,2021,CI,CIV,Sub-Saharan Africa,Western Africa,0.0,0.0,0.0,0.0,0.0,1.0
+Dominican Republic,92.6,66.9,27.0,21.0,31.0,6.7,6.9,2.0,90.0,2.5,68.6,99.5,98.6,2013,DR,DOM,Latin America & Caribbean,Caribbean,0.0,1.0,0.0,0.0,0.0,0.0
+Ecuador,94.15,74.4,57.0,35.0,81.0,25.9,20.1,1.7,89.0,4.2,35.8,71.4,64.8,1987,EC,ECU,Latin America & Caribbean,South America,0.0,1.0,0.0,0.0,0.0,0.0
+Egypt,99.3,96.8,22.0,14.0,27.0,39.7,21.4,8.4,56.0,3.5,56.9,90.3,92.8,2014,EG,EGY,North Africa/West Asia/Europe,North Africa,0.0,0.0,1.0,0.0,0.0,0.0
+Eritrea,91.4,84.2,48.0,24.0,93.0,52.0,42.9,14.9,77.0,4.8,7.3,70.4,28.3,2002,ER,ERI,Sub-Saharan Africa,Eastern Africa,0.0,0.0,0.0,0.0,0.0,1.0
+Eswatini,97.2,91.5,85.0,22.0,120.0,32.3,28.9,2.5,111.0,3.8,47.7,97.1,75.0,2006,SZ,SWZ,Sub-Saharan Africa,Southern Africa,0.0,0.0,0.0,0.0,0.0,1.0
+Ethiopia,66.4,53.7,39.0,25.0,51.0,57.3,39.9,4.7,53.0,4.0,34.5,77.6,64.0,2024,ET,ETH,Sub-Saharan Africa,Eastern Africa,0.0,0.0,0.0,0.0,0.0,1.0
+Gabon,87.8,67.2,28.0,18.0,39.0,19.4,14.4,3.4,100.0,3.9,17.3,96.8,94.5,2019,GA,GAB,Sub-Saharan Africa,Middle Africa,0.0,0.0,0.0,0.0,0.0,1.0
+Gambia,98.0,90.1,42.0,29.0,56.0,53.6,17.5,5.1,65.0,4.4,17.1,98.2,87.0,2019,GM,GMB,Sub-Saharan Africa,Western Africa,0.0,0.0,0.0,0.0,0.0,1.0
+Ghana,95.0,87.0,28.0,17.0,40.0,52.6,17.4,6.0,63.0,3.9,27.8,97.8,86.8,2022,GH,GHA,Sub-Saharan Africa,Western Africa,0.0,0.0,0.0,0.0,0.0,1.0
+Guatemala,98.1,63.2,28.0,17.0,35.0,53.2,46.5,0.7,92.0,3.1,48.9,90.9,68.3,2015,GU,GTM,Latin America & Caribbean,Central America,0.0,1.0,0.0,0.0,0.0,0.0
+Guyana,94.2,72.2,38.0,25.0,40.0,33.2,18.2,5.3,101.0,2.8,40.0,85.0,88.7,2009,GY,GUY,Latin America & Caribbean,South America,0.0,1.0,0.0,0.0,0.0,0.0
+Haiti,81.3,61.0,59.0,32.0,81.0,39.9,21.9,3.7,55.0,3.0,31.8,90.4,41.5,2016,HT,HTI,Latin America & Caribbean,Caribbean,0.0,1.0,0.0,0.0,0.0,0.0
+Honduras,99.1,97.4,24.0,18.0,29.0,31.2,22.6,1.4,101.0,2.9,63.8,96.6,82.9,2011,HN,HND,Latin America & Caribbean,Central America,0.0,1.0,0.0,0.0,0.0,0.0
+India,95.2,88.5,35.0,25.0,42.0,63.7,35.5,19.3,43.0,2.0,56.4,85.2,90.5,2020,IA,IND,South & Southeast Asia,South Asia,0.0,0.0,0.0,0.0,1.0,0.0
+Indonesia,91.0,84.7,24.0,15.0,32.0,51.5,27.0,9.35,36.0,2.4,57.2,97.5,90.9,2017,ID,IDN,South & Southeast Asia,Southeast Asia,0.0,0.0,0.0,0.0,1.0,0.0
+Jordan,96.8,94.0,14.0,9.0,15.0,23.9,8.3,2.3,17.0,2.6,38.4,97.0,99.9,2023,JO,JOR,North Africa/West Asia/Europe,West Asia,0.0,0.0,1.0,0.0,0.0,0.0
+Kazakhstan,85.2,78.5,62.0,34.0,71.0,35.8,12.8,2.4,40.0,2.0,52.8,92.8,99.0,1999,KK,KAZ,Central Asia,Central Asia,1.0,0.0,0.0,0.0,0.0,0.0
+Kenya,96.2,91.6,32.0,21.0,41.0,59.9,17.6,4.9,73.0,3.4,56.9,97.9,89.0,2022,KE,KEN,Sub-Saharan Africa,Eastern Africa,0.0,0.0,0.0,0.0,0.0,1.0
+Kyrgyz Republic,99.0,89.1,27.0,20.0,31.0,56.1,17.7,2.7,44.0,3.6,33.7,97.3,99.1,2012,KY,KGZ,Central Asia,Central Asia,1.0,0.0,0.0,0.0,0.0,0.0
+Lesotho,99.1,86.5,39.0,26.0,54.0,60.7,35.6,1.7,77.0,2.5,65.3,94.2,88.8,2023,LS,LSO,Sub-Saharan Africa,Southern Africa,0.0,0.0,0.0,0.0,0.0,1.0
+Madagascar,78.3,64.1,47.0,26.0,75.0,54.4,39.8,7.7,143.0,4.3,42.7,87.9,46.0,2021,MD,MDG,Sub-Saharan Africa,Eastern Africa,0.0,0.0,0.0,0.0,0.0,1.0
+Malawi,97.4,91.2,35.0,24.0,48.0,60.1,37.8,1.8,133.0,3.7,66.4,96.1,96.3,2024,MW,MWI,Sub-Saharan Africa,Eastern Africa,0.0,0.0,0.0,0.0,0.0,1.0
+Maldives,91.8,89.1,18.0,11.0,20.0,63.5,15.3,9.1,10.0,2.1,14.9,98.6,99.3,2016,MV,MDV,South & Southeast Asia,South Asia,0.0,0.0,0.0,0.0,1.0,0.0
+Mali,81.7,70.7,52.0,29.0,87.0,40.4,25.1,5.4,137.0,6.0,20.9,69.6,65.5,2023,ML,MLI,Sub-Saharan Africa,Western Africa,0.0,0.0,0.0,0.0,0.0,1.0
+Mauritania,90.1,77.9,33.0,22.0,41.0,40.9,25.8,6.4,90.0,5.2,12.8,84.8,72.0,2020,MR,MRT,Sub-Saharan Africa,Western Africa,0.0,0.0,0.0,0.0,0.0,1.0
+Mexico,94.15,74.4,47.0,27.0,62.0,31.15,20.1,1.7,86.0,4.0,44.6,73.9,70.5,1987,MX,MEX,Latin America & Caribbean,Central America,0.0,1.0,0.0,0.0,0.0,0.0
+Moldova,99.8,84.7,13.0,5.0,14.0,45.5,10.2,5.0,34.0,1.7,43.8,83.8,99.5,2005,MB,MDA,North Africa/West Asia/Europe,Eastern Europe,0.0,0.0,1.0,0.0,0.0,0.0
+Morocco,98.4,90.4,40.0,27.0,47.0,31.0,22.4,10.0,32.0,2.5,54.8,67.8,62.6,2003,MA,MAR,North Africa/West Asia/Europe,North Africa,0.0,0.0,1.0,0.0,0.0,0.0
+Mozambique,81.8,62.0,39.0,24.0,60.0,55.5,36.7,3.8,158.0,4.9,25.4,87.0,68.0,2022,MZ,MOZ,Sub-Saharan Africa,Eastern Africa,0.0,0.0,0.0,0.0,0.0,1.0
+Myanmar,87.8,77.3,40.0,25.0,50.0,51.2,29.2,7.0,36.0,2.3,51.3,82.9,64.9,2016,MM,MMR,South & Southeast Asia,Southeast Asia,0.0,0.0,0.0,0.0,1.0,0.0
+Namibia,94.2,89.5,39.0,20.0,54.0,48.5,23.7,6.2,82.0,3.6,55.3,96.6,88.9,2013,NM,NAM,Sub-Saharan Africa,Southern Africa,0.0,0.0,0.0,0.0,0.0,1.0
+Nepal,95.2,90.5,28.0,21.0,33.0,56.4,24.8,7.7,71.0,2.1,42.7,94.5,79.3,2022,NP,NPL,South & Southeast Asia,South Asia,0.0,0.0,0.0,0.0,1.0,0.0
+Nicaragua,96.0,88.9,31.0,16.0,39.0,31.1,24.9,2.2,119.0,3.2,66.1,70.1,89.7,2001,NC,NIC,Latin America & Caribbean,Central America,0.0,1.0,0.0,0.0,0.0,0.0
+Nigeria,66.7,47.9,63.0,41.0,110.0,28.8,39.5,8.4,77.0,4.8,15.3,62.1,45.7,2024,NG,NGA,Sub-Saharan Africa,Western Africa,0.0,0.0,0.0,0.0,0.0,1.0
+Pakistan,85.7,73.2,62.0,42.0,74.0,47.5,37.6,7.1,46.0,3.6,25.0,86.7,69.3,2017,PK,PAK,South & Southeast Asia,South Asia,0.0,0.0,0.0,0.0,1.0,0.0
+Papua New Guinea,68.3,61.9,33.0,20.0,49.0,62.2,25.1,5.4,68.0,4.2,30.5,74.5,57.7,2017,PG,PNG,Oceania,Pacific Islands,0.0,0.0,0.0,1.0,0.0,0.0
+Paraguay,67.3,73.9,34.0,19.0,43.0,8.7,18.3,0.5,97.0,4.7,35.2,85.7,67.8,1990,PY,PRY,Latin America & Caribbean,South America,0.0,1.0,0.0,0.0,0.0,0.0
+Peru,94.1,74.9,17.0,10.0,21.0,67.8,18.1,0.6,64.0,2.6,51.8,96.1,86.7,2012,PE,PER,Latin America & Caribbean,South America,0.0,1.0,0.0,0.0,0.0,0.0
+Philippines,87.8,79.2,22.0,15.0,26.0,40.9,27.0,9.35,25.0,1.9,41.8,86.1,90.3,2022,PH,PHL,South & Southeast Asia,Southeast Asia,0.0,0.0,0.0,0.0,1.0,0.0
+Rwanda,98.1,96.7,27.0,17.0,36.0,81.8,26.8,0.9,39.0,3.7,64.2,95.4,98.1,2025,RW,RWA,Sub-Saharan Africa,Eastern Africa,0.0,0.0,0.0,0.0,0.0,1.0
+Sao Tome and Principe,96.1,84.0,38.0,18.0,63.0,52.0,29.3,10.5,93.0,4.9,33.7,98.1,81.7,2008,ST,STP,Sub-Saharan Africa,Middle Africa,0.0,0.0,0.0,0.0,0.0,1.0
+Senegal,91.9,76.0,31.0,23.0,40.0,34.4,17.5,10.2,68.0,4.0,25.6,97.1,93.5,2023,SN,SEN,Sub-Saharan Africa,Western Africa,0.0,0.0,0.0,0.0,0.0,1.0
+Sierra Leone,94.9,74.7,75.0,31.0,122.0,54.1,29.5,5.4,102.0,4.2,20.9,98.1,88.5,2019,SL,SLE,Sub-Saharan Africa,Western Africa,0.0,0.0,0.0,0.0,0.0,1.0
+South Africa,92.5,84.4,35.0,21.0,42.0,31.6,27.4,2.5,71.0,2.6,54.0,93.9,96.7,2016,ZA,ZAF,Sub-Saharan Africa,Southern Africa,0.0,0.0,0.0,0.0,0.0,1.0
+Sri Lanka,89.4,81.15,25.0,16.0,34.0,10.2,27.0,9.35,32.0,2.7,40.6,86.4,87.0,1987,LK,LKA,South & Southeast Asia,South Asia,0.0,0.0,0.0,0.0,1.0,0.0
+Sudan,91.9,79.5,70.0,44.0,124.0,13.3,29.75,5.4,65.0,4.7,5.5,71.7,69.6,1990,SD,SDN,Sub-Saharan Africa,Eastern Africa,0.0,0.0,0.0,0.0,0.0,1.0
+Tajikistan,92.3,80.0,20.0,10.0,24.0,40.8,13.7,6.4,47.0,3.5,28.1,81.3,97.5,2023,TJ,TJK,Central Asia,Central Asia,1.0,0.0,0.0,0.0,0.0,0.0
+Tanzania,91.9,86.7,33.0,24.0,43.0,64.3,30.0,3.3,112.0,4.8,31.1,89.7,85.0,2022,TZ,TZA,Sub-Saharan Africa,Eastern Africa,0.0,0.0,0.0,0.0,0.0,1.0
+Thailand,89.4,81.15,35.0,20.0,44.0,5.3,27.0,9.35,53.0,2.2,63.6,80.4,71.4,1987,TH,THA,South & Southeast Asia,Southeast Asia,0.0,0.0,0.0,0.0,1.0,0.0
+Timor-Leste,80.5,69.3,30.0,19.0,41.0,50.2,45.6,24.0,42.0,4.2,24.1,84.5,58.4,2016,TL,TLS,South & Southeast Asia,Southeast Asia,0.0,0.0,0.0,0.0,1.0,0.0
+Trinidad and Tobago,94.15,74.4,28.0,23.0,32.0,9.9,20.1,1.7,82.0,3.1,44.4,98.0,98.3,1987,TT,TTO,Latin America & Caribbean,Caribbean,0.0,1.0,0.0,0.0,0.0,0.0
+Tunisia,96.8,92.8,48.0,26.0,62.0,18.0,16.35,5.9,27.0,4.2,40.4,61.6,70.3,1988,TN,TUN,North Africa/West Asia/Europe,North Africa,0.0,0.0,1.0,0.0,0.0,0.0
+Turkey,94.7,93.5,13.0,7.0,15.0,30.7,16.35,5.9,31.0,2.3,47.4,97.6,97.4,2013,TR,TUR,North Africa/West Asia/Europe,West Asia,0.0,0.0,1.0,0.0,0.0,0.0
+Turkmenistan,92.9,88.8,74.0,34.0,94.0,12.1,15.7,4.550000000000001,30.0,2.9,53.1,98.1,97.7,2000,TM,TKM,Central Asia,Central Asia,1.0,0.0,0.0,0.0,0.0,0.0
+Ukraine,96.8,92.8,14.0,9.0,17.0,18.2,16.35,5.9,24.0,1.2,47.5,99.0,99.2,2007,UA,UKR,North Africa/West Asia/Europe,Eastern Europe,0.0,0.0,1.0,0.0,0.0,0.0
+Uzbekistan,96.3,91.4,49.0,23.0,59.0,38.3,34.9,12.9,61.0,3.3,51.3,94.4,96.8,1996,UZ,UZB,Central Asia,Central Asia,1.0,0.0,0.0,0.0,0.0,0.0
+Yemen,65.7,63.3,43.0,26.0,53.0,10.3,46.5,16.3,67.0,4.4,29.2,59.6,46.5,2013,YE,YEM,North Africa/West Asia/Europe,West Asia,0.0,0.0,1.0,0.0,0.0,0.0
+Zambia,95.5,92.7,29.0,17.0,42.0,64.4,32.1,2.5,118.0,4.0,52.5,98.4,93.9,2024,ZM,ZMB,Sub-Saharan Africa,Eastern Africa,0.0,0.0,0.0,0.0,0.0,1.0

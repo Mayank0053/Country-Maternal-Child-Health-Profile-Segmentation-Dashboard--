@@ -1,7 +1,8 @@
 """
-Generates the comprehensive, formal Project Report in PDF format
+Generates the updated, comprehensive, formal Project Report in PDF format
 for the Country Maternal-Child Health Profile Segmentation project.
-Adheres to all mandatory sections and submission criteria.
+Explicitly highlights Individual Project Ownership, the dynamic non-static
+FastAPI backend architecture, and root preprocessed data availability.
 """
 
 import os
@@ -14,7 +15,7 @@ from reportlab.platypus import (
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.pdfgen import canvas
 
-# Numbered Canvas for Two-Pass Page Numbering ("Page X of Y")
+# Numbered Canvas for Running Headers & Footers ("Page X of Y")
 class NumberedCanvas(canvas.Canvas):
     def __init__(self, *args, **kwargs):
         super(NumberedCanvas, self).__init__(*args, **kwargs)
@@ -44,7 +45,7 @@ class NumberedCanvas(canvas.Canvas):
         self.drawString(54, letter[1] - 36, "COUNTRY MATERNAL-CHILD HEALTH PROFILE SEGMENTATION")
         self.setFont("Helvetica", 8)
         self.setFillColor(HexColor("#64748B"))
-        self.drawRightString(letter[0] - 54, letter[1] - 36, "Bill & Melinda Gates Foundation | Reg No: 12404505")
+        self.drawRightString(letter[0] - 54, letter[1] - 36, "Bill & Melinda Gates Foundation | Individual Project (Reg No: 12404505)")
         
         # Header line
         self.setStrokeColor(HexColor("#E2E8F0"))
@@ -54,7 +55,7 @@ class NumberedCanvas(canvas.Canvas):
         # Footer
         self.line(54, 45, letter[0] - 54, 45)
         self.setFont("Helvetica", 8)
-        self.drawString(54, 32, "Confidential Project Report - Unsupervised Machine Learning Submission")
+        self.drawString(54, 32, "Confidential Project Report - Unsupervised Machine Learning Individual Submission")
         page_str = f"Page {self._pageNumber} of {page_count}"
         self.drawRightString(letter[0] - 54, 32, page_str)
         self.restoreState()
@@ -85,33 +86,31 @@ def build_pdf_report(output_filename="Country_MCH_Segmentation_Project_Report.pd
         "CoverTitle",
         parent=styles["Normal"],
         fontName="Helvetica-Bold",
-        fontSize=26,
-        leading=32,
+        fontSize=25,
+        leading=31,
         textColor=NAVY,
-        alignment=0,
-        spaceAfter=12
+        spaceAfter=10
     )
 
     subtitle_style = ParagraphStyle(
         "CoverSubtitle",
         parent=styles["Normal"],
         fontName="Helvetica",
-        fontSize=13,
-        leading=18,
+        fontSize=12.5,
+        leading=17,
         textColor=TEXT_MUTED,
-        alignment=0,
-        spaceAfter=20
+        spaceAfter=18
     )
 
     h1_style = ParagraphStyle(
         "Heading1_Custom",
         parent=styles["Normal"],
         fontName="Helvetica-Bold",
-        fontSize=16,
-        leading=20,
+        fontSize=15,
+        leading=19,
         textColor=NAVY,
-        spaceBefore=16,
-        spaceAfter=8,
+        spaceBefore=15,
+        spaceAfter=7,
         keepWithNext=True
     )
 
@@ -119,11 +118,11 @@ def build_pdf_report(output_filename="Country_MCH_Segmentation_Project_Report.pd
         "Heading2_Custom",
         parent=styles["Normal"],
         fontName="Helvetica-Bold",
-        fontSize=12,
-        leading=16,
+        fontSize=11.5,
+        leading=15,
         textColor=PRIMARY_BLUE,
         spaceBefore=10,
-        spaceAfter=5,
+        spaceAfter=4,
         keepWithNext=True
     )
 
@@ -131,8 +130,8 @@ def build_pdf_report(output_filename="Country_MCH_Segmentation_Project_Report.pd
         "Body_Custom",
         parent=styles["Normal"],
         fontName="Helvetica",
-        fontSize=9.5,
-        leading=14,
+        fontSize=9.2,
+        leading=13.5,
         textColor=TEXT_DARK,
         spaceAfter=6
     )
@@ -141,8 +140,8 @@ def build_pdf_report(output_filename="Country_MCH_Segmentation_Project_Report.pd
         "Bullet_Custom",
         parent=styles["Normal"],
         fontName="Helvetica",
-        fontSize=9,
-        leading=13.5,
+        fontSize=8.8,
+        leading=13,
         textColor=TEXT_DARK,
         leftIndent=15,
         firstLineIndent=-10,
@@ -153,8 +152,8 @@ def build_pdf_report(output_filename="Country_MCH_Segmentation_Project_Report.pd
         "MetaLabel",
         parent=styles["Normal"],
         fontName="Helvetica-Bold",
-        fontSize=10,
-        leading=14,
+        fontSize=9.5,
+        leading=13.5,
         textColor=NAVY
     )
 
@@ -162,8 +161,8 @@ def build_pdf_report(output_filename="Country_MCH_Segmentation_Project_Report.pd
         "MetaValue",
         parent=styles["Normal"],
         fontName="Helvetica",
-        fontSize=9.5,
-        leading=14,
+        fontSize=9.2,
+        leading=13.5,
         textColor=TEXT_DARK
     )
 
@@ -200,49 +199,52 @@ def build_pdf_report(output_filename="Country_MCH_Segmentation_Project_Report.pd
     story = []
 
     # -------------------------------------------------------------
-    # 1. TITLE PAGE
+    # 1. TITLE PAGE (INDIVIDUAL PROJECT EMPHASIS)
     # -------------------------------------------------------------
-    story.append(Spacer(1, 20))
-    story.append(Paragraph("PROJECT SUBMISSION REPORT", ParagraphStyle("Tag", fontName="Helvetica-Bold", fontSize=10, textColor=ACCENT_BLUE, leading=12, spaceAfter=8)))
+    story.append(Spacer(1, 15))
+    story.append(Paragraph("★ INDIVIDUAL PROJECT SUBMISSION ★", ParagraphStyle("IndividualTag", fontName="Helvetica-Bold", fontSize=11, textColor=HexColor("#D97706"), leading=14, spaceAfter=6)))
     story.append(Paragraph("Country Maternal-Child Health Profile Segmentation Using Unsupervised Learning", title_style))
-    story.append(Paragraph("A Reproducible Machine Learning Pipeline on USAID Demographic and Health Surveys (DHS) Program Open Indicators", subtitle_style))
-    story.append(HRFlowable(width="100%", thickness=2.5, color=PRIMARY_BLUE, spaceBefore=0, spaceAfter=18))
+    story.append(Paragraph("Dynamic Full-Stack Machine Learning Architecture on USAID Demographic and Health Surveys (DHS) Program Open Indicators", subtitle_style))
+    story.append(HRFlowable(width="100%", thickness=2.5, color=PRIMARY_BLUE, spaceBefore=0, spaceAfter=16))
 
     meta_table_data = [
-        [Paragraph("Problem Statement ID / Organization:", meta_label), Paragraph("Bill & Melinda Gates Foundation", meta_val)],
-        [Paragraph("Student Registration Number:", meta_label), Paragraph("12404505", meta_val)],
+        [Paragraph("Project Ownership:", meta_label), Paragraph("<b>100% Individual Project (Sole Contributor)</b>", meta_val)],
+        [Paragraph("Student Name:", meta_label), Paragraph("<b>Mayank</b>", meta_val)],
+        [Paragraph("Student Registration Number:", meta_label), Paragraph("<b>12404505</b>", meta_val)],
+        [Paragraph("Target Organization / Problem Statement:", meta_label), Paragraph("<b>Bill & Melinda Gates Foundation</b>", meta_val)],
+        [Paragraph("Dynamic Backend Server:", meta_label), Paragraph("FastAPI Server (<code>app.py</code>) running at <code>http://127.0.0.1:8000</code>", meta_val)],
+        [Paragraph("Interactive Swagger API Docs:", meta_label), Paragraph("<font color='#0284C7'><u>http://127.0.0.1:8000/docs</u></font>", meta_val)],
+        [Paragraph("Root Source & Preprocessed Datasets:", meta_label), Paragraph("<code>SOURCE_DHS_RAW_DATA.csv</code> & <code>PREPROCESSED_MCH_CLEAN.csv</code>", meta_val)],
         [Paragraph("GitHub Repository:", meta_label), Paragraph("<font color='#0284C7'><u>https://github.com/Mayank0053/Country-Maternal-Child-Health-Profile-Segmentation-Dashboard--</u></font>", meta_val)],
         [Paragraph("Live Deployed Project Link:", meta_label), Paragraph("<font color='#0284C7'><u>https://mayank0053.github.io/Country-Maternal-Child-Health-Profile-Segmentation-Dashboard--/</u></font>", meta_val)],
-        [Paragraph("Academic Assessment:", meta_label), Paragraph("Unsupervised Learning Final Project Submission", meta_val)],
-        [Paragraph("Submission Package:", meta_label), Paragraph("Complete Codebase, PDF Report, PPTX Slides, and Data Assets", meta_val)],
-        [Paragraph("Date of Submission:", meta_label), Paragraph("November 2026", meta_val)]
+        [Paragraph("Submission Date:", meta_label), Paragraph("November 2026", meta_val)]
     ]
 
-    t_meta = Table(meta_table_data, colWidths=[2.2 * inch, 4.8 * inch])
+    t_meta = Table(meta_table_data, colWidths=[2.3 * inch, 4.7 * inch])
     t_meta.setStyle(TableStyle([
         ("BACKGROUND", (0, 0), (-1, -1), BG_LIGHT),
         ("BOX", (0, 0), (-1, -1), 1, BORDER_COLOR),
         ("INNERGRID", (0, 0), (-1, -1), 0.5, BORDER_COLOR),
-        ("TOPPADDING", (0, 0), (-1, -1), 7),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 7),
+        ("TOPPADDING", (0, 0), (-1, -1), 5.5),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 5.5),
         ("LEFTPADDING", (0, 0), (-1, -1), 10),
         ("RIGHTPADDING", (0, 0), (-1, -1), 10),
     ]))
     story.append(t_meta)
-    story.append(Spacer(1, 25))
+    story.append(Spacer(1, 16))
 
     exec_summary_text = (
-        "<b>Executive Abstract:</b> This project develops an end-to-end, reproducible unsupervised machine learning "
-        "framework to discover multidimensional maternal and child health (MCH) typologies across 78 developing nations. "
-        "Using nationally representative open indicators from the USAID DHS Program REST API, the pipeline integrates "
-        "child survival, maternal care, child nutrition, immunization, and reproductive dynamics. Following rigorous "
-        "Region-Stratified Median Imputation and standardization, K-Means clustering across multiple configurations "
-        "(k in [2, 6]) is benchmarked against Manhattan distance K-Medoids. Principal Component Analysis (PCA) reveals that "
-        "three orthogonal axes explain 67.99% of total cross-national variance. The optimal defensible 4-cluster structure "
-        "is validated through WCSS (-9.7% marginal drop), Silhouette coefficients (0.1355 Euclidean, 0.1532 Manhattan), "
-        "Davies-Bouldin index (1.84), and bootstrap stability analysis (ARI = 0.597 +/- 0.163). Discovered health profiles "
-        "inform targeted philanthropic investments for the Bill & Melinda Gates Foundation, supported by an interactive "
-        "zero-dependency web dashboard deployed via GitHub Pages."
+        "<b>Executive Declaration & Abstract:</b> This project is an individual project completed entirely by Mayank "
+        "(Registration Number: 12404505). It develops an end-to-end, dynamic full-stack machine learning framework to "
+        "segment 78 developing nations into defensible maternal and child health (MCH) typologies. Departing from static "
+        "visualizations, the project integrates a high-performance <b>FastAPI dynamic backend server</b> supporting real-time "
+        "on-the-fly clustering, interactive country health typology simulations, and automated dataset streaming. Both the "
+        "un-imputed source survey data (<code>SOURCE_DHS_RAW_DATA.csv</code>) and the region-stratified clean data "
+        "(<code>PREPROCESSED_MCH_CLEAN.csv</code>) have been placed directly in the main root directory for transparent faculty "
+        "inspection. K-Means (k in [2, 6]) is benchmarked against Manhattan distance K-Medoids (PAM algorithm). Three orthogonal "
+        "PCA components explain 67.99% of total variance. The defensible 4-cluster structure is mathematically justified via "
+        "WCSS (-9.7% drop), Silhouette score (0.1355 Euclidean, 0.1532 Manhattan), Davies-Bouldin index (1.84), and 50-run "
+        "bootstrap subsampling stability (ARI = 0.5970 +/- 0.1630)."
     )
     story.append(Paragraph(exec_summary_text, body_style))
     story.append(PageBreak())
@@ -252,17 +254,15 @@ def build_pdf_report(output_filename="Country_MCH_Segmentation_Project_Report.pd
     # -------------------------------------------------------------
     story.append(Paragraph("1. Introduction and Problem Statement", h1_style))
     story.append(Paragraph(
-        "Maternal and child health (MCH) outcomes represent the foundational litmus test of national health system capacity, "
-        "equity, and societal resilience. Each year, hundreds of thousands of women perish during pregnancy and childbirth, "
-        "and over five million children die before reaching their fifth birthday, predominantly in low- and middle-income "
-        "countries (LMICs). Despite major international commitments under Sustainable Development Goal 3 (SDG 3), "
-        "progress remains highly uneven.", body_style
+        "Maternal and child health (MCH) outcomes reflect the fundamental capacity, equity, and resilience of national health systems. "
+        "Every year, hundreds of thousands of mothers and over five million children die from preventable causes in low- and middle-income "
+        "countries (LMICs). Despite major international commitments under Sustainable Development Goal 3 (SDG 3), progress remains highly unequal.", body_style
     ))
     story.append(Paragraph(
         "Historically, international development organizations have relied on univariate metrics—such as GDP per capita, "
         "national under-5 mortality, or maternal mortality ratios—to categorize countries and allocate funding. However, "
         "univariate rankings obscure critical clinical and systemic nuances. Two countries with identical GDP per capita "
-        "often present radically divergent healthcare dynamics: one may suffer from severe primary care deficits and "
+        "often present radically divergent healthcare realities: one may suffer from severe primary care deficits and "
         "low skilled delivery attendance, while the other maintains high institutional birth coverage but struggles with "
         "entrenched childhood nutritional stunting and wasting.", body_style
     ))
@@ -303,49 +303,51 @@ def build_pdf_report(output_filename="Country_MCH_Segmentation_Project_Report.pd
     story.append(Spacer(1, 8))
 
     # -------------------------------------------------------------
-    # 4. OVERVIEW, KEY FEATURES & WORKING
+    # 4. OVERVIEW, KEY FEATURES & DYNAMIC WORKING
     # -------------------------------------------------------------
-    story.append(Paragraph("3. Project Overview, Key Features, and Working", h1_style))
+    story.append(Paragraph("3. Project Overview, Key Features, and Dynamic Working", h1_style))
     story.append(Paragraph(
-        "The project operates as an automated, modular, and end-to-end data science architecture:", body_style
+        "The project operates as an advanced, non-static, full-stack data science system:", body_style
     ))
     story.append(Paragraph(
-        "<b>1. Automated REST API Ingestion:</b> Connects to <code>https://api.dhsprogram.com/rest/dhs/data</code> to fetch "
-        "survey indicator records dynamically, with automatic deduplication to isolate national totals and local caching.", bullet_style
+        "<b>1. Dynamic FastAPI Backend Server (<code>app.py</code>):</b> Provides high-performance REST API endpoints for "
+        "live data querying, real-time server-side ML clustering (<code>/api/cluster/run</code>), and custom country health "
+        "archetype simulation (<code>/api/predict</code>). Includes interactive Swagger documentation at <code>/docs</code>.", bullet_style
     ))
     story.append(Paragraph(
-        "<b>2. Domain-Aware Missing Value Imputation:</b> Employs a two-tier strategy where sparse surveys are dropped and missing "
-        "indicators are imputed using regional medians (Sub-Saharan Africa, South Asia, Latin America, etc.) rather than global averages, "
-        "preserving local epidemiological baseline characteristics.", bullet_style
+        "<b>2. Direct Faculty Data Inspection in Root:</b> Source un-imputed survey data (<code>SOURCE_DHS_RAW_DATA.csv</code>) "
+        "and clean preprocessed data (<code>PREPROCESSED_MCH_CLEAN.csv</code>) are available directly in the root directory for "
+        "independent verification alongside <code>DATA_PREPROCESSING_INSPECTION_GUIDE.md</code>.", bullet_style
     ))
     story.append(Paragraph(
-        "<b>3. Dual-Geometry Clustering:</b> Implements both standard Euclidean K-Means (L2) and Manhattan Distance K-Medoids (L1) "
+        "<b>3. Domain-Aware Region-Stratified Imputation:</b> Employs an epidemiological strategy where sparse surveys are dropped "
+        "and missing indicators are imputed using regional medians (Sub-Saharan Africa, South Asia, etc.) rather than global averages, "
+        "preserving authentic regional health characteristics with zero remaining nulls.", bullet_style
+    ))
+    story.append(Paragraph(
+        "<b>4. Dual-Geometry Clustering:</b> Implements both standard Euclidean K-Means (L2) and Manhattan Distance K-Medoids (L1) "
         "using Partitioning Around Medoids (PAM) to contrast centroid-based versus exemplar-based cluster boundaries.", bullet_style
     ))
     story.append(Paragraph(
-        "<b>4. Interactive Web Analytics Dashboard:</b> A responsive, zero-dependency browser dashboard (HTML5, CSS3, Vanilla JS, "
-        "Chart.js 4.4) enabling users to toggle cluster counts (k=3, 4, 5), explore interactive 2D PCA biplots, inspect comparative "
-        "radar profiles, and access detailed National Health Scorecards for every country.", bullet_style
-    ))
-    story.append(Paragraph(
-        "<b>5. Automated Cloud Deployment:</b> Deployed on GitHub Pages via a GitHub Actions CI/CD workflow, delivering instant "
-        "global accessibility without requiring server maintenance or runtime configuration.", bullet_style
+        "<b>5. Light-Themed Web Analytics Dashboard:</b> A clean, professional light-colored browser interface (HTML5, CSS3, Chart.js) "
+        "integrating dynamic server status detection, on-the-fly clustering controls, interactive PCA biplots, and country health scorecards.", bullet_style
     ))
     story.append(Spacer(1, 8))
 
     # -------------------------------------------------------------
-    # 5. TOOLS, TECHNOLOGIES & FRAMEWORKS
+    # 5. TOOLS, TECHNOLOGIES & ARCHITECTURE
     # -------------------------------------------------------------
     story.append(Paragraph("4. Tools, Technologies, and Frameworks Used", h1_style))
     tech_table_data = [
         [Paragraph("Category", table_header_style), Paragraph("Tools / Frameworks", table_header_style), Paragraph("Function & Justification", table_header_style)],
+        [Paragraph("Dynamic Backend", table_cell_style), Paragraph("FastAPI 0.110, Uvicorn", table_cell_style), Paragraph("Asynchronous REST API, real-time ML execution, Swagger docs at /docs.", table_cell_style)],
         [Paragraph("Core Language", table_cell_style), Paragraph("Python 3.11.18", table_cell_style), Paragraph("High-performance scientific computing and scripting runtime.", table_cell_style)],
         [Paragraph("Data Manipulation", table_cell_style), Paragraph("Pandas 2.2, NumPy 1.26", table_cell_style), Paragraph("Matrix operations, tabular preprocessing, pivoting, and deduplication.", table_cell_style)],
         [Paragraph("Machine Learning", table_cell_style), Paragraph("Scikit-Learn 1.4", table_cell_style), Paragraph("K-Means, PCA, StandardScaler, OneHotEncoder, validation metrics.", table_cell_style)],
         [Paragraph("Distance Geometry", table_cell_style), Paragraph("SciPy 1.12", table_cell_style), Paragraph("Pairwise Manhattan distance matrices and PAM optimization.", table_cell_style)],
         [Paragraph("Visualization", table_cell_style), Paragraph("Matplotlib 3.8, Seaborn 0.13", table_cell_style), Paragraph("Publication-quality plots (300 DPI), biplots, heatmaps, and radar charts.", table_cell_style)],
-        [Paragraph("Interactive UI", table_cell_style), Paragraph("HTML5, CSS3, Chart.js 4.4", table_cell_style), Paragraph("Interactive browser dashboard with zero build dependencies.", table_cell_style)],
-        [Paragraph("CI/CD & Hosting", table_cell_style), Paragraph("GitHub Actions, GitHub Pages", table_cell_style), Paragraph("Automated build, test, and static hosting pipeline.", table_cell_style)],
+        [Paragraph("Light-Themed UI", table_cell_style), Paragraph("HTML5, CSS3, Chart.js 4.4", table_cell_style), Paragraph("Clean medical light-themed dynamic dashboard connecting to REST API.", table_cell_style)],
+        [Paragraph("CI/CD & Hosting", table_cell_style), Paragraph("GitHub Actions, GitHub Pages", table_cell_style), Paragraph("Automated deployment pipeline and global static hosting.", table_cell_style)],
         [Paragraph("Document Engine", table_cell_style), Paragraph("ReportLab 5.1, python-pptx 1.0", table_cell_style), Paragraph("Automated generation of publication PDF report and PPTX deck.", table_cell_style)]
     ]
     t_tech = Table(tech_table_data, colWidths=[1.4 * inch, 2.0 * inch, 3.6 * inch])
@@ -353,8 +355,8 @@ def build_pdf_report(output_filename="Country_MCH_Segmentation_Project_Report.pd
         ("BACKGROUND", (0, 0), (-1, 0), NAVY),
         ("GRID", (0, 0), (-1, -1), 0.5, BORDER_COLOR),
         ("ROWBACKGROUNDS", (0, 1), (-1, -1), [HexColor("#FFFFFF"), BG_LIGHT]),
-        ("TOPPADDING", (0, 0), (-1, -1), 4),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
+        ("TOPPADDING", (0, 0), (-1, -1), 3.5),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 3.5),
     ]))
     story.append(t_tech)
     story.append(PageBreak())
@@ -364,13 +366,13 @@ def build_pdf_report(output_filename="Country_MCH_Segmentation_Project_Report.pd
     # -------------------------------------------------------------
     story.append(Paragraph("5. Technical Documentation & Dataset Details", h1_style))
     story.append(Paragraph(
-        "<b>Data Source & Ingestion:</b> The dataset was queried from the USAID DHS Program open indicator repository. "
-        "The raw extract contained 84 national surveys. Six countries with >50% missing indicators (e.g. malaria-only survey rounds) "
-        "were filtered out, yielding 78 complete national profiles spanning 13 indicators across four core clinical domains:", body_style
+        "<b>Data Source & Ingestion:</b> Sourced from the official USAID DHS Program REST API. The raw extract "
+        "(<code>SOURCE_DHS_RAW_DATA.csv</code>) contained 84 national surveys. Six countries with >50% missing indicators "
+        "were filtered out, yielding 78 complete national profiles in <code>PREPROCESSED_MCH_CLEAN.csv</code>:", body_style
     ))
 
     ind_table_data = [
-        [Paragraph("Domain", table_header_style), Paragraph("Indicator Name", table_header_style), Paragraph("Unit / Description", table_header_style), Paragraph("Mean (SD)", table_header_style)],
+        [Paragraph("Domain", table_header_style), Paragraph("Indicator Name", table_header_style), Paragraph("Unit / Description", table_header_style), Paragraph("Clean Mean (SD)", table_header_style)],
         [Paragraph("Child Survival", table_cell_style), Paragraph("Under5_Mortality_Rate", table_cell_style), Paragraph("Deaths per 1,000 live births (0-5 yrs)", table_cell_style), Paragraph("50.1 (25.8)", table_cell_center)],
         [Paragraph("Child Survival", table_cell_style), Paragraph("Infant_Mortality_Rate", table_cell_style), Paragraph("Deaths per 1,000 live births (first year)", table_cell_style), Paragraph("37.6 (17.4)", table_cell_center)],
         [Paragraph("Child Survival", table_cell_style), Paragraph("Neonatal_Mortality_Rate", table_cell_style), Paragraph("Deaths per 1,000 live births (first 28 days)", table_cell_style), Paragraph("22.4 (8.9)", table_cell_center)],
@@ -394,68 +396,30 @@ def build_pdf_report(output_filename="Country_MCH_Segmentation_Project_Report.pd
         ("BOTTOMPADDING", (0, 0), (-1, -1), 3),
     ]))
     story.append(t_ind)
-    story.append(Spacer(1, 10))
-
-    story.append(Paragraph("<b>Mathematical Formulations of Preprocessing and Modeling:</b>", h2_style))
-    story.append(Paragraph(
-        "<b>1. Feature Standardization:</b> Continuous variables were scaled using z-score normalization: "
-        "<code>z_ij = (x_ij - mu_j) / sigma_j</code>, ensuring zero mean and unit variance across all indicators.", body_style
-    ))
-    story.append(Paragraph(
-        "<b>2. K-Means Inertia (WCSS):</b> Standard K-Means minimizes the Within-Cluster Sum of Squares under squared Euclidean distance: "
-        "<code>WCSS = sum_{k=1}^K sum_{x in C_k} ||x - mu_k||_2^2</code>.", body_style
-    ))
-    story.append(Paragraph(
-        "<b>3. Manhattan K-Medoids Objective:</b> In contrast to K-Means, Manhattan K-Medoids replaces synthetic centroids with "
-        "actual country medoids <code>m_k in C_k</code> and minimizes the L1 norm: "
-        "<code>L1_Inertia = sum_{k=1}^K sum_{x in C_k} ||x - m_k||_1 = sum_{k=1}^K sum_{x in C_k} sum_{j=1}^D |x_j - m_{kj}|</code>.", body_style
-    ))
-    story.append(Paragraph(
-        "<b>4. Silhouette Coefficient:</b> For sample <code>i</code>, <code>s(i) = (b(i) - a(i)) / max(a(i), b(i))</code>, "
-        "where <code>a(i)</code> is intra-cluster distance and <code>b(i)</code> is nearest-cluster distance. Evaluated using both Euclidean and Manhattan metrics.", body_style
-    ))
-    story.append(Paragraph(
-        "<b>5. Davies-Bouldin Index:</b> <code>DB = (1/K) sum_{i=1}^K max_{j != i} ((s_i + s_j) / d(c_i, c_j))</code>, "
-        "where <code>s_i</code> is average intra-cluster scatter and <code>d(c_i, c_j)</code> is centroid separation. Lower values indicate superior partitions.", body_style
-    ))
     story.append(Spacer(1, 8))
 
-    # -------------------------------------------------------------
-    # 7. METHODOLOGY AND IMPLEMENTATION
-    # -------------------------------------------------------------
-    story.append(Paragraph("6. Methodology and Implementation", h1_style))
+    story.append(Paragraph("<b>Mathematical Formulations:</b>", h2_style))
     story.append(Paragraph(
-        "The implementation was executed through modular, reusable Python packages located in <code>src/</code>:", body_style
+        "<b>1. Standardization:</b> <code>z_ij = (x_ij - mu_j) / sigma_j</code> ensures zero mean and unit variance across all indicators.", body_style
     ))
     story.append(Paragraph(
-        "• <b>data_loader.py:</b> Implements automated REST API fetching, parameterization (<code>selectSurveys=latest</code>), "
-        "country metadata merging (ISO3, DHS Region), and raw dataset persistence.", bullet_style
+        "<b>2. K-Means WCSS:</b> Minimizes squared Euclidean dispersion: <code>WCSS = sum_{k=1}^K sum_{x in C_k} ||x - mu_k||_2^2</code>.", body_style
     ))
     story.append(Paragraph(
-        "• <b>preprocessing.py:</b> Executes survey filtering (>50% missingness threshold), Region-Stratified Median Imputation "
-        "by grouping countries by geographic region, One-Hot Categorical Encoding, and StandardScaler transformation.", bullet_style
+        "<b>3. Manhattan K-Medoids:</b> Replaces centroids with country medoids and minimizes L1 norm: <code>L1_Inertia = sum_{k=1}^K sum_{x in C_k} ||x - m_k||_1</code>.", body_style
     ))
     story.append(Paragraph(
-        "• <b>clustering.py:</b> Fits K-Means across k in [2, 6] using <code>k-means++</code> initialization (50 restarts); "
-        "implements custom ManhattanKMedoids class using SciPy pairwise distance matrices; and computes 3-component PCA projections.", bullet_style
+        "<b>4. Silhouette Score:</b> <code>s(i) = (b(i) - a(i)) / max(a(i), b(i))</code>. Evaluated using both Euclidean and Manhattan metrics.", body_style
     ))
     story.append(Paragraph(
-        "• <b>evaluation.py:</b> Computes quantitative validation metrics (WCSS, Silhouette, Davies-Bouldin, Calinski-Harabasz) "
-        "and evaluates Adjusted Rand Index (ARI) between Euclidean and Manhattan partitions.", bullet_style
-    ))
-    story.append(Paragraph(
-        "• <b>stability.py:</b> Evaluates clustering stability across 30 random initialization seeds and 50 iterations of "
-        "85% bootstrap subsampling.", bullet_style
-    ))
-    story.append(Paragraph(
-        "• <b>visualization.py:</b> Generates 8 publication-grade charts (300 DPI) and exports dashboard data payload.", bullet_style
+        "<b>5. Davies-Bouldin Index:</b> <code>DB = (1/K) sum_{i=1}^K max_{j != i} ((s_i + s_j) / d(c_i, c_j))</code>. Lower indicates tighter, better-separated clusters.", body_style
     ))
     story.append(PageBreak())
 
     # -------------------------------------------------------------
-    # 8. RESULTS, TESTING & VISUAL ANALYSIS
+    # 7. RESULTS, TESTING & VISUAL ANALYSIS
     # -------------------------------------------------------------
-    story.append(Paragraph("7. Results, Quantitative Validation & Visualizations", h1_style))
+    story.append(Paragraph("6. Results, Quantitative Validation & Visualizations", h1_style))
     story.append(Paragraph(
         "Table 1 outlines the complete quantitative validation benchmark across all tested cluster configurations:", body_style
     ))
@@ -474,23 +438,20 @@ def build_pdf_report(output_filename="Country_MCH_Segmentation_Project_Report.pd
         ("GRID", (0, 0), (-1, -1), 0.5, BORDER_COLOR),
         ("ROWBACKGROUNDS", (0, 1), (-1, -1), [HexColor("#FFFFFF"), BG_LIGHT]),
         ("BACKGROUND", (0, 3), (-1, 3), HexColor("#EFF6FF")),
-        ("TOPPADDING", (0, 0), (-1, -1), 4),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
+        ("TOPPADDING", (0, 0), (-1, -1), 3.5),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 3.5),
     ]))
     story.append(t_val)
-    story.append(Spacer(1, 10))
+    story.append(Spacer(1, 8))
 
     story.append(Paragraph(
-        "<b>Justification for Defensible Clustering Choice (k=4):</b> While k=2 mathematically maximizes the silhouette coefficient, "
-        "it merely establishes a coarse macro division between Sub-Saharan Africa and the rest of the developing world. In contrast, "
-        "k=4 captures the pivotal clinical distinction between countries suffering from acute maternal-infant mortality crises versus "
-        "those with emerging health infrastructure facing chronic childhood stunting. The elbow method demonstrates that beyond k=4, "
-        "marginal WCSS reduction drops below 10%, indicating diminishing returns.", body_style
+        "<b>Justification of Defensible Structure (k = 4):</b> k=4 was selected because it successfully isolates extreme maternal-infant "
+        "mortality crises from emerging health systems with high stunting. The elbow method shows marginal WCSS reduction drops "
+        "below 10% after k=4 (-9.73%), establishing the optimal point of diminishing returns.", body_style
     ))
 
-    # Embed Visual Figures
     figures_to_add = [
-        ("outputs/figures/elbow_wcss_curve.png", "Figure 1: Elbow Method Analysis displaying WCSS and Marginal Variance Drop across k."),
+        ("outputs/figures/elbow_wcss_curve.png", "Figure 1: Elbow Method Analysis showing WCSS and marginal reduction across k."),
         ("outputs/figures/pca_2d_clusters.png", "Figure 2: PCA 2D Biplot Projection of National Health Profiles colored by assigned cluster."),
         ("outputs/figures/cluster_radar_profiles.png", "Figure 3: Multi-Axis Cluster Radar Chart comparing normalized indicator scores across typologies."),
         ("outputs/figures/feature_boxplots_by_cluster.png", "Figure 4: Comparative Indicator Boxplots displaying cross-cluster distribution of key health metrics.")
@@ -498,106 +459,101 @@ def build_pdf_report(output_filename="Country_MCH_Segmentation_Project_Report.pd
 
     for fig_path, caption in figures_to_add:
         if os.path.exists(fig_path):
-            story.append(Spacer(1, 8))
-            story.append(Image(fig_path, width=6.2 * inch, height=3.2 * inch))
-            story.append(Paragraph(f"<i>{caption}</i>", ParagraphStyle("Caption", fontName="Helvetica", fontSize=8, textColor=TEXT_MUTED, alignment=1, spaceBefore=3)))
+            story.append(Spacer(1, 6))
+            story.append(Image(fig_path, width=6.2 * inch, height=3.1 * inch))
+            story.append(Paragraph(f"<i>{caption}</i>", ParagraphStyle("Caption", fontName="Helvetica", fontSize=7.8, textColor=TEXT_MUTED, alignment=1, spaceBefore=2)))
 
     story.append(PageBreak())
 
     # -------------------------------------------------------------
-    # 9. DISCOVERED PROFILES & STABILITY ANALYSIS
+    # 8. DISCOVERED PROFILES & STABILITY ANALYSIS
     # -------------------------------------------------------------
-    story.append(Paragraph("8. Discovered Health Typologies & Stability Analysis", h1_style))
+    story.append(Paragraph("7. Discovered Health Typologies & Stability Analysis", h1_style))
     story.append(Paragraph(
         "The optimal 4-cluster solution segments the 78 developing nations into four distinct public health typologies:", body_style
     ))
 
     typologies_data = [
         ("Tier 1: High-Burden / Urgent Priority (n=18 countries)",
-         "Characterized by severe maternal and child mortality crises: Mean Under-5 Mortality = 82.4 deaths/1,000 live births; "
-         "Skilled Birth Attendance = 46.8%; Total Fertility Rate = 5.2 children/woman; Modern Contraceptive Prevalence = 18.2%. "
-         "Exemplar nations include Chad, Mali, Nigeria, Sierra Leone, Guinea, and Angola. Urgent priorities: Emergency obstetric care, "
-         "neonatal resuscitation packages, and rural community health worker deployment."),
+         "Severe maternal and child mortality crises: Mean Under-5 Mortality = 82.4 deaths/1k live births; Skilled Birth Attendance = 46.8%; "
+         "Total Fertility Rate = 5.2 children/woman; Modern Contraceptive Prevalence = 18.2%. Exemplars: Chad, Mali, Nigeria, Sierra Leone, Guinea, Angola. "
+         "Urgent Priorities: Emergency obstetric care, neonatal resuscitation packages, community health worker networks."),
         
         ("Tier 2: Nutritional & Mortality Vulnerability (n=26 countries)",
-         "Characterized by moderate mortality but alarmingly high chronic childhood malnutrition: Mean Under-5 Mortality = 54.3/1,000; "
-         "Child Stunting = 34.6%; Skilled Delivery = 71.2%; Exclusive Breastfeeding = 55.4%. Exemplar nations include Madagascar, "
-         "Tanzania, Zambia, Rwanda, Ethiopia, and Yemen. Urgent priorities: Maternal micronutrient supplementation, infant complementary "
-         "feeding interventions, and water, sanitation, and hygiene (WASH) infrastructure."),
+         "Moderate mortality but critical chronic childhood malnutrition: Mean Under-5 Mortality = 54.3/1k; Child Stunting = 34.6%; "
+         "Skilled Delivery = 71.2%; Exclusive Breastfeeding = 55.4%. Exemplars: Madagascar, Tanzania, Zambia, Rwanda, Ethiopia, Yemen. "
+         "Urgent Priorities: Maternal micronutrient supplementation, complementary feeding programs, WASH infrastructure."),
         
         ("Tier 3: Moderate Health Transition (n=20 countries)",
-         "Characterized by expanding primary healthcare coverage and transitioning fertility: Mean Under-5 Mortality = 34.1/1,000; "
-         "Skilled Delivery = 82.5%; Measles Vaccination Coverage = 83.2%; Total Fertility Rate = 2.9. Exemplar nations include Bangladesh, "
-         "Nepal, Cambodia, Ghana, Senegal, and Kenya. Urgent priorities: Quality improvement in rural delivery clinics and postpartum family planning."),
+         "Expanding primary healthcare and declining fertility: Mean Under-5 Mortality = 34.1/1k; Skilled Delivery = 82.5%; "
+         "Measles Vaccination = 83.2%; Total Fertility Rate = 2.9. Exemplars: Bangladesh, Nepal, Cambodia, Ghana, Senegal, Kenya. "
+         "Urgent Priorities: Upgrading rural health clinics and expanding postpartum family planning."),
         
         ("Tier 4: High Coverage / Resilient Health Systems (n=14 countries)",
-         "Characterized by robust primary health systems and low child mortality: Mean Under-5 Mortality = 17.6/1,000; Skilled Delivery = 96.4%; "
-         "Antenatal Care = 97.2%; Modern Contraceptive Prevalence = 58.1%; Total Fertility Rate = 2.1. Exemplar nations include Colombia, "
-         "Dominican Republic, Egypt, Jordan, Armenia, and Maldives. Priorities: Addressing marginalized pockets and adolescent health.")
+         "Robust primary care infrastructure and low mortality: Mean Under-5 Mortality = 17.6/1k; Skilled Delivery = 96.4%; "
+         "Antenatal Care = 97.2%; Modern Contraceptive = 58.1%; Total Fertility = 2.1. Exemplars: Colombia, Dominican Republic, Egypt, Jordan, Armenia, Maldives. "
+         "Priorities: Eliminating subnational urban-rural disparities and adolescent mental health.")
     ]
 
     for title, desc in typologies_data:
         story.append(Paragraph(f"<b>{title}</b>", h2_style))
         story.append(Paragraph(desc, body_style))
 
-    story.append(Spacer(1, 8))
+    story.append(Spacer(1, 6))
     story.append(Paragraph("<b>Quantitative Stability Analysis:</b>", h2_style))
     story.append(Paragraph(
         "• <b>Initialization Stability (30 Random Seeds):</b> Pairwise comparison across 30 random seeds of K-Means++ yielded a "
-        "Mean Adjusted Rand Index (ARI) of <b>0.6646 +/- 0.1256</b> (Maximum ARI = 1.0000). This proves that the discovered clusters "
-        "represent authentic geometric structures rather than artifacts of initialization.", bullet_style
+        "Mean Adjusted Rand Index (ARI) of <b>0.6646 +/- 0.1256</b> (Maximum ARI = 1.0000). Proves cluster boundaries are authentic geometric structures.", bullet_style
     ))
     story.append(Paragraph(
         "• <b>Bootstrap Subsampling Stability (50 Iterations at 85% Subsample):</b> Resampling 85% of countries over 50 iterations "
         "yielded a Mean ARI of <b>0.5970 +/- 0.1630</b>, demonstrating solid robustness to sample perturbation.", bullet_style
     ))
     story.append(Paragraph(
-        "• <b>Euclidean vs. Manhattan Distance Metric Sensitivity:</b> At k=2, ARI between Euclidean K-Means and Manhattan K-Medoids is "
-        "<b>0.7118</b> (high consensus on macro divides). At k=4, ARI is <b>0.3345</b>, reflecting Manhattan's ability to resist extreme "
-        "outlier leverage in high-variance indicators like infant mortality.", bullet_style
+        "• <b>Distance Metric Sensitivity:</b> At k=2, ARI between Euclidean K-Means and Manhattan K-Medoids is <b>0.7118</b>. At k=4, "
+        "ARI is <b>0.3345</b>, reflecting Manhattan's ability to resist extreme outlier leverage in high-variance indicators like infant mortality.", bullet_style
     ))
     story.append(PageBreak())
 
     # -------------------------------------------------------------
-    # 10. DEPLOYMENT & INDIVIDUAL CONTRIBUTIONS
+    # 9. DEPLOYMENT & INDIVIDUAL CONTRIBUTIONS (EXPLICIT)
     # -------------------------------------------------------------
-    story.append(Paragraph("9. Deployment Details, Performance & Security", h1_style))
+    story.append(Paragraph("8. Deployment Details, Performance & Security", h1_style))
     story.append(Paragraph(
-        "The project includes an interactive web dashboard deployed globally on GitHub Pages:", body_style
+        "The project features both local dynamic full-stack execution and global cloud deployment:", body_style
     ))
     story.append(Paragraph(
-        "• <b>Live Deployment URL:</b> <font color='#0284C7'><u>https://mayank0053.github.io/Country-Maternal-Child-Health-Profile-Segmentation-Dashboard--/</u></font>", bullet_style
+        "• <b>Dynamic FastAPI Backend (Local Host):</b> <code>http://127.0.0.1:8000</code> with interactive Swagger docs at <code>/docs</code>.", bullet_style
+    ))
+    story.append(Paragraph(
+        "• <b>Live Cloud Deployed URL:</b> <font color='#0284C7'><u>https://mayank0053.github.io/Country-Maternal-Child-Health-Profile-Segmentation-Dashboard--/</u></font>", bullet_style
     ))
     story.append(Paragraph(
         "• <b>GitHub Repository:</b> <font color='#0284C7'><u>https://github.com/Mayank0053/Country-Maternal-Child-Health-Profile-Segmentation-Dashboard--</u></font>", bullet_style
     ))
     story.append(Paragraph(
-        "• <b>CI/CD Infrastructure:</b> Configured using GitHub Actions (<code>.github/workflows/deploy.yml</code>), with permissions "
-        "<code>pages: write</code> and <code>id-token: write</code> to enable automated testing and deployment on every push to main.", bullet_style
-    ))
-    story.append(Paragraph(
-        "• <b>Client-Side Architecture:</b> Zero backend runtime requirements; static JSON payload (<code>data.js</code>) embedded directly "
-        "to ensure instantaneous loading times (<200ms) and complete offline viability.", bullet_style
+        "• <b>CI/CD Infrastructure:</b> Configured via GitHub Actions (<code>.github/workflows/deploy.yml</code>) with automated test and release pipelines.", bullet_style
     ))
     story.append(Spacer(1, 10))
 
-    story.append(Paragraph("10. Individual Contributions of Group Member", h1_style))
+    story.append(Paragraph("9. Individual Project Ownership & Academic Declaration", h1_style))
     story.append(Paragraph(
-        "In compliance with submission guidelines, the detailed responsibilities and completed work for the group contributor are documented below:", body_style
+        "In compliance with submission guidelines, the detailed responsibilities and completed work for the sole contributor are documented below:", body_style
     ))
 
     contrib_data = [
-        [Paragraph("Group Member Name", table_header_style), Paragraph("Registration Number", table_header_style), Paragraph("Completed Responsibilities & Technical Work", table_header_style)],
+        [Paragraph("Contributor Name", table_header_style), Paragraph("Registration Number", table_header_style), Paragraph("100% Individual Contributions & Responsibilities", table_header_style)],
         [
-            Paragraph("<b>Mayank</b>", table_cell_style),
+            Paragraph("<b>Mayank</b><br/><br/><font color='#D97706'><b>Sole Contributor</b></font>", table_cell_style),
             Paragraph("<b>12404505</b>", table_cell_center),
             Paragraph(
-                "• <b>Formulation:</b> Formulated the Bill & Melinda Gates Foundation MCH segmentation problem.<br/>"
-                "• <b>Data Engineering:</b> Built REST API data ingestion (<code>data_loader.py</code>) and Region-Stratified Median Imputation (<code>preprocessing.py</code>).<br/>"
-                "• <b>Machine Learning:</b> Developed multi-k K-Means, Manhattan K-Medoids, and PCA decomposition (<code>clustering.py</code>).<br/>"
-                "• <b>Model Validation:</b> Implemented quantitative evaluation (WCSS, Silhouette, Davies-Bouldin) and bootstrap stability analysis (<code>evaluation.py</code>, <code>stability.py</code>).<br/>"
-                "• <b>Visual Analytics:</b> Created all 8 high-resolution 300 DPI figures and radar charts (<code>visualization.py</code>).<br/>"
-                "• <b>Web Development:</b> Built the interactive web dashboard (HTML5/CSS3/Chart.js) and configured GitHub Actions CI/CD deployment.<br/>"
+                "• <b>Academic Declaration:</b> Conceived, designed, implemented, and tested this project entirely individually.<br/>"
+                "• <b>Problem Formulation:</b> Formulated the Bill & Melinda Gates Foundation MCH segmentation methodology.<br/>"
+                "• <b>Data Engineering:</b> Built REST API data ingestion (<code>src/data_loader.py</code>) and Region-Stratified Imputation (<code>src/preprocessing.py</code>); placed <code>SOURCE_DHS_RAW_DATA.csv</code> and <code>PREPROCESSED_MCH_CLEAN.csv</code> in root.<br/>"
+                "• <b>Machine Learning:</b> Developed multi-k K-Means, Manhattan K-Medoids from scratch (PAM algorithm), and PCA in <code>src/clustering.py</code>.<br/>"
+                "• <b>Model Validation:</b> Implemented quantitative evaluation (WCSS, Silhouette, Davies-Bouldin) and bootstrap stability analysis (<code>src/evaluation.py</code>, <code>src/stability.py</code>).<br/>"
+                "• <b>Dynamic Backend:</b> Authored <code>app.py</code> using FastAPI, exposing REST endpoints for dynamic clustering, country typology prediction, and dataset streaming.<br/>"
+                "• <b>Light-Themed Web UI:</b> Built the responsive light-colored dashboard with Chart.js, Swagger integration, and faculty data inspector.<br/>"
                 "• <b>Documentation:</b> Authored the formal project report (PDF), presentation deck (PPTX), Jupyter Notebook, and README.md.",
                 table_cell_style
             )
@@ -615,9 +571,9 @@ def build_pdf_report(output_filename="Country_MCH_Segmentation_Project_Report.pd
     story.append(PageBreak())
 
     # -------------------------------------------------------------
-    # 11. LIMITATIONS, SAMPLING BIAS & ETHICAL GUIDELINES
+    # 10. LIMITATIONS, SAMPLING BIAS & ETHICS
     # -------------------------------------------------------------
-    story.append(Paragraph("11. Limitations, Sampling Bias, and Future Scope", h1_style))
+    story.append(Paragraph("10. Limitations, Sampling Bias, and Future Scope", h1_style))
     story.append(Paragraph(
         "<b>Methodological Limitations and Sampling Bias:</b>", h2_style
     ))
@@ -647,7 +603,7 @@ def build_pdf_report(output_filename="Country_MCH_Segmentation_Project_Report.pd
     ))
     story.append(Spacer(1, 8))
 
-    story.append(Paragraph("12. Responsible Use & Ethical Policy Framework", h1_style))
+    story.append(Paragraph("11. Responsible Use & Ethical Policy Framework", h1_style))
     story.append(Paragraph(
         "• <b>Non-Punitive Aid Allocation:</b> Unsupervised cluster tiers must never be weaponized to impose punitive conditionalities "
         "or restrict foreign assistance. Tiers represent structural health vulnerabilities requiring targeted solidarity, not governmental blame.", bullet_style
@@ -658,7 +614,7 @@ def build_pdf_report(output_filename="Country_MCH_Segmentation_Project_Report.pd
     ))
     story.append(Spacer(1, 10))
 
-    story.append(Paragraph("13. References and Resources Used", h1_style))
+    story.append(Paragraph("12. References and Resources Used", h1_style))
     refs = [
         "1. USAID Demographic and Health Surveys (DHS) Program. REST API & Indicator Data. Available at: https://api.dhsprogram.com/.",
         "2. World Health Organization (WHO). (2020). Standards for Improving Quality of Maternal and Newborn Care in Health Facilities. Geneva: WHO.",
@@ -672,7 +628,7 @@ def build_pdf_report(output_filename="Country_MCH_Segmentation_Project_Report.pd
         story.append(Paragraph(r, ParagraphStyle("Ref", fontName="Helvetica", fontSize=8, leading=11, textColor=TEXT_DARK, spaceAfter=3)))
 
     doc.build(story, canvasmaker=NumberedCanvas)
-    print(f"Project Report successfully generated: {output_filename}")
+    print(f"Updated Project Report successfully generated: {output_filename}")
 
 if __name__ == "__main__":
     build_pdf_report()

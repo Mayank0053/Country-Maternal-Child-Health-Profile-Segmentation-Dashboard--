@@ -1,78 +1,80 @@
 # Country Maternal-Child Health Profile Segmentation Using Unsupervised Learning
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-brightgreen?logo=github&style=for-the-badge)](https://mayank0053.github.io/Country-Maternal-Child-Health-Profile-Segmentation-Dashboard--/)
+[![Individual Project](https://img.shields.io/badge/Project%20Type-100%25%20Individual-orange?style=for-the-badge)](https://github.com/Mayank0053/Country-Maternal-Child-Health-Profile-Segmentation-Dashboard--)
+[![FastAPI Backend](https://img.shields.io/badge/Backend-FastAPI%20Dynamic%20REST%20API-009688?logo=fastapi&style=for-the-badge)](http://127.0.0.1:8000/docs)
 [![Python 3.11](https://img.shields.io/badge/Python-3.11-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Scikit-Learn](https://img.shields.io/badge/scikit--learn-1.3%2B-orange.svg)](https://scikit-learn.org/)
-[![DHS Program](https://img.shields.io/badge/Data-USAID%20DHS%20Program-green.svg)](https://dhsprogram.com/)
 
-> 🌐 **Interactive Live Dashboard:** [https://mayank0053.github.io/Country-Maternal-Child-Health-Profile-Segmentation-Dashboard--/](https://mayank0053.github.io/Country-Maternal-Child-Health-Profile-Segmentation-Dashboard--/)
+> 🏛️ **Organization / Problem Statement:** Bill & Melinda Gates Foundation  
+> 👤 **Sole Contributor:** Mayank | **Registration Number:** 12404505  
+> 🌐 **Interactive Live Dashboard:** [https://mayank0053.github.io/Country-Maternal-Child-Health-Profile-Segmentation-Dashboard--/](https://mayank0053.github.io/Country-Maternal-Child-Health-Profile-Segmentation-Dashboard--/)  
+> ⚡ **Dynamic FastAPI Backend Server:** `http://127.0.0.1:8000` (Interactive Swagger Docs: `http://127.0.0.1:8000/docs`)
+
+---
+
+## Academic & Faculty Verification Notice
+This project is an **Individual Project** conceived, implemented, tested, and documented by **Mayank (Reg No: 12404505)**. 
+
+### Direct Source & Preprocessed Datasets (In Root Directory):
+For rapid faculty review and independent analysis, the un-imputed survey extract and preprocessed datasets have been placed **directly in the main project directory**:
+
+1. **[`SOURCE_DHS_RAW_DATA.csv`](file:///c:/Users/chawl/OneDrive/Desktop/New%20folder/unsupervised%20learning%20project/SOURCE_DHS_RAW_DATA.csv)**: Unedited raw survey indicator extract from the USAID DHS REST API across 84 countries (includes initial survey null distributions).
+2. **[`PREPROCESSED_MCH_CLEAN.csv`](file:///c:/Users/chawl/OneDrive/Desktop/New%20folder/unsupervised%20learning%20project/PREPROCESSED_MCH_CLEAN.csv)**: Clean, imputed, and categorical encoded national health dataset (78 countries, 0 nulls, clinically interpretable units).
+3. **[`PREPROCESSED_MCH_SCALED.csv`](file:///c:/Users/chawl/OneDrive/Desktop/New%20folder/unsupervised%20learning%20project/PREPROCESSED_MCH_SCALED.csv)**: Standardized feature matrix ($z = \frac{x - \mu}{\sigma}$) ready for unsupervised clustering.
+4. **[`DATA_PREPROCESSING_INSPECTION_GUIDE.md`](file:///c:/Users/chawl/OneDrive/Desktop/New%20folder/unsupervised%20learning%20project/DATA_PREPROCESSING_INSPECTION_GUIDE.md)**: Exhaustive documentation detailing feature definitions, missingness diagnosis, Region-Stratified Median Imputation formulas, and summary statistics.
 
 ---
 
 ## Executive Summary
-This project delivers an end-to-end, reproducible unsupervised machine learning pipeline to segment countries based on their **Maternal-Child Health (MCH) profiles** using nationally representative survey data from the **USAID Demographic and Health Surveys (DHS) Program**.
+This project delivers a **dynamic, full-stack unsupervised machine learning system** to segment developing nations into actionable **Maternal-Child Health (MCH) profiles** using nationally representative survey data from the **USAID Demographic and Health Surveys (DHS) Program**.
 
-Rather than relying on univariate rankings or economic proxies (e.g., GDP per capita) that obscure clinical complexities, this project applies multivariate clustering to discover distinct, multi-dimensional health system typologies. The solution provides global health agencies, international donors, and policymakers with actionable insights to allocate resources, design targeted clinical interventions, and track progress toward Sustainable Development Goal 3 (Good Health and Well-Being).
+Rather than relying on static pages or univariate economic rankings (e.g., GDP per capita) that obscure clinical healthcare deficits, this project combines a high-performance **FastAPI dynamic backend server** with a modern **light-themed web analytics dashboard**. The system features real-time on-the-fly clustering, interactive country risk prediction simulations, and automated REST API data streams.
 
 ```
-DHS REST API ──> Preprocessing (Impute, Encode, Scale) ──> Multi-k K-Means & Manhattan K-Medoids
-                                                                    │
-                                         ┌──────────────────────────┴──────────────────────────┐
-                                         ▼                                                     ▼
-                             PCA Dimensionality Reduction                         Quantitative Validation
-                                 (68.0% Variance)                            (WCSS, Silhouette, Davies-Bouldin)
-                                         │                                                     │
-                                         └──────────────────────────┬──────────────────────────┘
-                                                                    ▼
-                                              Cluster Interpretation & Typologies
-                                              (Radar Profiles, Stability, Ethics)
-                                                                    │
-                                         ┌──────────────────────────┴──────────────────────────┐
-                                         ▼                                                     ▼
-                             Interactive Web Dashboard                              Reproducible Notebook
-                             (Chart.js, HTML5/CSS3)                               (& Publication Figures)
+USAID DHS REST API ──> Preprocessing (Region Median Imputation, One-Hot Encoding, StandardScaler)
+                                              │
+                         ┌────────────────────┴────────────────────┐
+                         ▼                                         ▼
+            Root Inspection Datasets                   Dynamic FastAPI Backend (app.py)
+        - SOURCE_DHS_RAW_DATA.csv                  - GET /api/data/source, /preprocessed
+        - PREPROCESSED_MCH_CLEAN.csv               - POST /api/cluster/run (Dynamic ML)
+        - PREPROCESSED_MCH_SCALED.csv              - POST /api/predict (Country Simulator)
+                         │                                         │
+                         └────────────────────┬────────────────────┘
+                                              ▼
+                             Unsupervised ML & Dimensionality Reduction
+                             - Multi-k K-Means & Manhattan K-Medoids
+                             - PCA Biplot & Health Axes (68.0% Variance)
+                             - Quantitative Validation (WCSS, Silhouette, Davies-Bouldin)
+                                              │
+                         ┌────────────────────┴────────────────────┐
+                         ▼                                         ▼
+            Light-Themed Web Dashboard                 Academic Project Artifacts
+            - Real-time API Integration                - PDF Report (Country_MCH_Segmentation_Report.pdf)
+            - Swagger Docs (/docs)                     - PPTX Deck (Country_MCH_Segmentation_Deck.pptx)
+            - 1-Click Launcher (run_dynamic_app.bat)   - Final Submission Archive (12404505.zip)
 ```
 
 ---
 
-## Project Objectives & Accomplishments
+## Key Features & Dynamic Backend Capabilities
 
-### Objective 1: Data Preparation & Preprocessing
-* **Authentic Data Ingestion:** Sourced directly from the official DHS Program REST API (`https://api.dhsprogram.com/rest/dhs/data`), retrieving national survey totals across **78 countries**.
-* **13 Multidisciplinary MCH Features across 4 Clinical Domains:**
-  1. *Child Survival:* Under-5 Mortality Rate (U5MR), Infant Mortality Rate (IMR), Neonatal Mortality Rate (NMR).
-  2. *Maternal & Reproductive Care:* Antenatal Care from Skilled Provider (ANC), Skilled Birth Attendance (SBA), Modern Contraceptive Prevalence Rate (mCPR), Total Fertility Rate (TFR), Adolescent Fertility Rate (15–19).
-  3. *Child Nutrition & Feeding:* Stunting Prevalence (HAZ < -2 SD), Wasting Prevalence (WHZ < -2 SD), Exclusive Breastfeeding under 6 months (EBF).
-  4. *Immunization Coverage:* Measles Vaccination Coverage, BCG Vaccination Coverage.
-* **Missing Value Management:**
-  - Evaluated missingness mechanisms across surveys. Filtered 6 sparse survey rounds (>50% nulls).
-  - Implemented **Region-Stratified Median Imputation**: Missing values were imputed using the median of the country's geographical region (`Sub-Saharan Africa`, `South & Southeast Asia`, `Latin America & Caribbean`, `North Africa/West Asia/Europe`, `Central Asia`), preserving local epidemiological baselines.
-  - Zero remaining nulls verified.
-* **Categorical Encoding & Standardization:**
-  - Categorical geographic regions encoded via **One-Hot Encoding**.
-  - All numerical indicators standardized using `StandardScaler` ($z = \frac{x - \mu}{\sigma}$) to ensure equitable distance weighting across disparate measurement scales (rates per 1,000 live births, percentages 0–100%, and children per woman).
+### 1. Dynamic Server-Side Machine Learning (`app.py`)
+* **Real-Time Clustering Endpoint (`POST /api/cluster/run`)**: Clients send parameter payloads `{ "k": 4, "metric": "euclidean" }`. The server dynamically executes K-Means or Manhattan K-Medoids on the fly, computes WCSS, Silhouette, and Davies-Bouldin metrics, projects PCA coordinates, and streams the updated model results to the UI.
+* **Country Typology Simulator (`POST /api/predict`)**: Faculty and public health analysts can enter hypothetical or newly surveyed national health indicators (e.g. Under-5 Mortality = 65/1k, Skilled Delivery = 55%). The server normalizes the inputs, predicts the assigned health typology tier, computes distance to all cluster centroids, and returns tailored clinical intervention packages.
+* **Interactive OpenAPI Swagger Docs (`/docs`)**: Built-in interactive API exploration and request testing.
+
+### 2. Strict Light-Themed Web Analytics Dashboard
+* **Clean Medical Aesthetics**: Pure white cards (`#FFFFFF`), light slate canvases (`#F8FAFC`), deep navy headers (`#0F172A`, `#1E3A8A`), and medical cyan accents (`#0284C7`).
+* **Live Connection Status Detection**: Displays live backend connection status pill in navbar (`🟢 Connected to FastAPI Server (Dynamic Mode)`).
+* **Faculty Data Inspection Tab**: Integrated client-side viewer to toggle between raw survey data, imputed clean data, and scaled feature matrices.
 
 ---
 
-### Objective 2: Unsupervised Modeling, Distance Metrics & PCA
+## Quantitative Model Validation Benchmark
 
-#### 1. Multi-Configuration Clustering ($k \in [2, 6]$)
-We trained K-Means across 5 cluster counts ($k=2, 3, 4, 5, 6$) using `k-means++` initialization and $n_{\text{init}}=50$.
-
-#### 2. Euclidean vs. Manhattan Distance Comparison
-Standard K-Means optimizes squared Euclidean distance ($L_2$). To evaluate sensitivity to extreme skewness in infant mortality and fertility, we implemented **Manhattan Distance ($L_1$) K-Medoids** using the Partitioning Around Medoids (PAM) algorithm on pairwise Manhattan distances:
-* **Metric Sensitivity:** At $k=2$, the Adjusted Rand Index (ARI) between Euclidean and Manhattan solutions is **0.71**, indicating substantial agreement on macro development divides.
-* At $k=4$, ARI is **0.33**, demonstrating that Manhattan $L_1$ geometry forms more compact clusters around medoid exemplars, isolating severe high-mortality outlier countries without distorting cluster boundaries.
-
-#### 3. Principal Component Analysis (PCA)
-* **Explained Variance:** The first 3 principal components account for **67.99%** of cumulative variance:
-  - **PC1 (45.13%):** *Health Infrastructure vs. Mortality Axis.* Heavily loaded on Skilled Delivery (+0.36), Antenatal Care (+0.32), and negatively loaded on Under-5 Mortality (-0.35), Infant Mortality (-0.35), and Total Fertility (-0.34).
-  - **PC2 (12.29%):** *Nutritional Stunting & Feeding Axis.* Dominated by Child Stunting (+0.44), Wasting (+0.42), and Exclusive Breastfeeding (+0.36).
-  - **PC3 (10.57%):** *Immunization & Family Planning Axis.* Dominated by Measles Vaccination (+0.56) and Modern Contraceptive Prevalence (+0.41).
-
-#### 4. Quantitative Validation Metrics
-| Number of Clusters ($k$) | WCSS (Inertia) | % WCSS Drop | Silhouette (Euclidean) | Silhouette (Manhattan) | Davies-Bouldin Index | Calinski-Harabasz Score | ARI (L2 vs L1) |
+| Number of Clusters ($k$) | WCSS (Inertia) | % WCSS Drop | Silhouette (Euclidean) | Silhouette (Manhattan) | Davies-Bouldin Index | Calinski-Harabasz | ARI ($L_2$ vs $L_1$) |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | **$k=2$** | 710.18 | Baseline | **0.2627** | 0.2902 | **1.4628** | **32.51** | 0.7118 |
 | **$k=3$** | 622.81 | -12.30% | 0.1847 | 0.1995 | 1.7364 | 23.55 | 0.3824 |
@@ -80,148 +82,105 @@ Standard K-Means optimizes squared Euclidean distance ($L_2$). To evaluate sensi
 | **$k=5$** | 511.61 | -9.00% | 0.1445 | 0.1562 | 1.6770 | 17.92 | 0.3046 |
 | **$k=6$** | 473.13 | -7.52% | 0.1465 | 0.1649 | 1.6223 | 16.46 | 0.3952 |
 
-#### Defensible Structure Selection: Why $k=4$?
-While mathematical silhouette peaks at $k=2$, a 2-cluster partition produces an uninformative macro split between Sub-Saharan Africa and other nations. **$k=4$ was selected as the defensible, actionable structure** because:
-1. It captures the critical public health distinction between countries facing **severe maternal-infant mortality crises** versus those facing **chronic childhood nutritional stunting despite expanding clinical care**.
-2. WCSS elbow reduction decelerates beyond $k=4$ (drops below 9%).
-3. Silhouette analysis across sample silhouettes shows all 4 clusters maintain positive average silhouette widths without singleton artifacts.
+### Justification of Defensible Structure ($k=4$)
+1. **Clinical Granularity**: Effectively isolates nations facing catastrophic maternal-infant mortality crises (Chad, Mali, Nigeria) from nations facing severe childhood stunting with moderate primary care (Madagascar, Tanzania, Zambia).
+2. **Elbow Method**: Marginal WCSS reduction drops below 10% after $k=4$ (-9.73%), establishing the authentic point of diminishing returns.
+3. **Statistical Stability**: Verified via 50-run bootstrap subsampling (Mean ARI = **0.5970 ± 0.1630**) and 30-seed initialization perturbations (Mean ARI = **0.6646 ± 0.1256**).
 
 ---
 
-### Objective 3: Cluster Interpretation, Stability & Ethical Framework
+## Discovered Health Typologies ($k=4$)
 
-#### Discovered Health Typologies ($k=4$)
-1. **Cluster 1: High-Burden / Urgent Humanitarian Priority ($n=18$ countries)**
-   - *Profile:* Under-5 Mortality = 82.4/1,000 live births; Skilled Birth Attendance = 46.8%; Modern Contraceptive Rate = 18.2%; Total Fertility Rate = 5.2.
-   - *Key Exemplars:* Chad, Mali, Nigeria, Sierra Leone, Guinea, Angola.
-   - *Policy Priority:* Emergency obstetric care, expanding community healthcare worker networks, expanding emergency neonatal resuscitation.
-2. **Cluster 2: Nutritional & Mortality Vulnerability ($n=26$ countries)**
-   - *Profile:* Under-5 Mortality = 54.3/1,000; Child Stunting = 34.6%; Skilled Birth Attendance = 71.2%; Exclusive Breastfeeding = 55.4%.
-   - *Key Exemplars:* Madagascar, Tanzania, Zambia, Rwanda, Ethiopia, Yemen.
-   - *Policy Priority:* Multi-sectoral nutrition interventions, maternal dietary supplementation, micronutrient fortification, water and sanitation (WASH).
-3. **Cluster 3: Moderate Health Transition ($n=20$ countries)**
-   - *Profile:* Under-5 Mortality = 34.1/1,000; Skilled Delivery = 82.5%; Measles Vaccination = 83.2%; Total Fertility Rate = 2.9.
-   - *Key Exemplars:* Bangladesh, Nepal, Cambodia, Ghana, Senegal, Kenya.
-   - *Policy Priority:* Consolidation of primary health center quality, postpartum family planning, reducing non-communicable complications in pregnancy.
-4. **Cluster 4: High Coverage / Resilient Health Systems ($n=14$ countries)**
-   - *Profile:* Under-5 Mortality = 17.6/1,000; Skilled Delivery = 96.4%; Antenatal Care = 97.2%; Modern Contraceptive Rate = 58.1%; TFR = 2.1.
-   - *Key Exemplars:* Colombia, Dominican Republic, Egypt, Jordan, Armenia, Maldives.
-   - *Policy Priority:* Eliminating subnational urban-rural disparities, adolescent mental health, early childhood developmental screening.
-
-#### Stability Analysis Results
-* **Initialization Stability (30 Random Seeds):** Mean ARI = **0.6646 ± 0.1256** (Max ARI = 1.0000). Proves that cluster boundaries are robust and not an artifact of local minima.
-* **Bootstrap Subsampling Stability (50 iterations at 85% subsample):** Mean ARI = **0.5970 ± 0.1630**. Confirms that the structure remains stable when countries are withheld.
-
----
-
-## Critical Limitations, Sampling Bias & Ethical Framework
-
-### 1. Methodological Limitations & Sampling Bias
-* **Temporal Survey Asynchrony:** DHS surveys are executed on staggered 5-year cycles. Analyzed countries span survey years from 2011 to 2023. Recent political shocks, economic crises, or health system investments post-survey are unobserved in the cross-sectional view.
-* **Conflict & Geographic Exclusions:** Two-stage cluster sampling relies on national census enumeration areas. In countries experiencing civil insecurity (e.g. northern Nigeria, eastern DRC, Mali), dangerous clusters are dropped for surveyor safety, introducing an **optimistic survivorship bias**.
-* **Maternal Recall Bias:** Retrospective 5-year birth histories require mothers to recall exact infant birth dates and survival. Perinatal and neonatal deaths are frequently underreported in cultural settings with high infant mortality stigma.
-* **Survivorship Bias in Nutrition Metrics:** Anthropometric metrics (stunting, wasting) are measured only on living children. In high-mortality clusters, the most acutely malnourished children may have died prior to survey administration, artificially deflating observed wasting rates.
-
-### 2. Responsible Use & Ethical Policy Guidelines
-* **Non-Punitive Aid Allocation:** Unsupervised cluster tiers must never be utilized to impose punitive conditionalities or penalize lower-tier countries. Clusters represent structural health system deficits requiring global solidarity and technical support.
-* **Subnational Heterogeneity:** National aggregates mask dramatic within-country inequities between affluent urban centers and impoverished rural peripheries. Subnational disaggregation must accompany national-level findings before deploying clinical interventions.
-* **National Ownership & Sovereignty:** Analytical cluster labels should serve as decision-support heuristics for national ministries of health, not prescriptive dictates imposed by external multilateral agencies.
-
----
-
-## Codebase Architecture & File Structure
-
-```
-unsupervised learning project/
-├── .venv/                              # Python 3.11 virtual environment
-├── data/
-│   ├── raw/
-│   │   └── dhs_mch_indicators_raw.csv  # 84-country raw DHS extract
-│   └── processed/
-│       ├── dhs_mch_clean.csv           # Cleaned, imputed, encoded dataset
-│       └── dhs_mch_scaled.csv          # Standardized feature matrix
-├── src/
-│   ├── __init__.py                     # Package definition
-│   ├── data_loader.py                  # DHS REST API ingestion & caching
-│   ├── preprocessing.py               # Imputation, one-hot encoding, scaling
-│   ├── clustering.py                   # Euclidean KMeans, Manhattan KMedoids, PCA
-│   ├── evaluation.py                   # WCSS, Silhouette, Davies-Bouldin, CH
-│   ├── visualization.py                # Publication plots (DPI 300)
-│   └── stability.py                    # Bootstrap & seed ARI stability
-├── notebooks/
-│   └── Country_MCH_Segmentation.ipynb  # End-to-end reproducible Jupyter Notebook
-├── outputs/
-│   ├── figures/                        # High-resolution PNG visualizations
-│   │   ├── elbow_wcss_curve.png
-│   │   ├── clustering_validation_metrics.png
-│   │   ├── silhouette_analysis_k.png
-│   │   ├── pca_2d_clusters.png
-│   │   ├── pca_loadings_heatmap.png
-│   │   ├── cluster_radar_profiles.png
-│   │   ├── distance_metric_comparison.png
-│   │   └── feature_boxplots_by_cluster.png
-│   └── reports/
-│       ├── cluster_metrics_summary.csv
-│       ├── country_cluster_assignments.csv
-│       ├── cluster_feature_profiles.csv
-│       ├── distance_metric_contingency.csv
-│       └── stability_analysis.json
-├── dashboard/                          # Interactive Zero-Dependency Web App
-│   ├── index.html                      # UI layout with responsive grid
-│   ├── styles.css                      # Modern professional styling
-│   ├── app.js                          # Dynamic Chart.js visualizations & filtering
-│   └── data.js                         # Exported 78-country JSON payload
-├── run_pipeline.py                     # CLI master pipeline script
-├── run_dashboard.bat                   # Instant Windows desktop launcher
-├── requirements.txt                    # Python dependency manifest
-└── README.md                           # Comprehensive documentation & report
-```
+1. **Tier 1: High-Burden / Urgent Priority ($n=18$ countries)**
+   * *Profile:* Under-5 Mortality = 82.4/1k live births; Skilled Birth Attendance = 46.8%; Modern Contraceptive Rate = 18.2%; Total Fertility Rate = 5.2.
+   * *Exemplars:* Chad, Mali, Nigeria, Sierra Leone, Guinea, Angola.
+   * *Urgent Action:* Emergency obstetric care, community health workers, newborn resuscitation.
+2. **Tier 2: Nutritional & Mortality Vulnerability ($n=26$ countries)**
+   * *Profile:* Under-5 Mortality = 54.3/1k; Child Stunting = 34.6%; Skilled Delivery = 71.2%; Exclusive Breastfeeding = 55.4%.
+   * *Exemplars:* Madagascar, Tanzania, Zambia, Rwanda, Ethiopia, Yemen.
+   * *Urgent Action:* Micronutrient fortification, maternal dietary support, WASH infrastructure.
+3. **Tier 3: Moderate Health Transition ($n=20$ countries)**
+   * *Profile:* Under-5 Mortality = 34.1/1k; Skilled Delivery = 82.5%; Measles Vaccine = 83.2%; Total Fertility Rate = 2.9.
+   * *Exemplars:* Bangladesh, Nepal, Cambodia, Ghana, Senegal, Kenya.
+   * *Urgent Action:* Quality improvement in rural clinics and postpartum family planning.
+4. **Tier 4: High Coverage / Resilient Health Systems ($n=14$ countries)**
+   * *Profile:* Under-5 Mortality = 17.6/1k; Skilled Delivery = 96.4%; Antenatal Care = 97.2%; Contraceptive Rate = 58.1%; TFR = 2.1.
+   * *Exemplars:* Colombia, Dominican Republic, Egypt, Jordan, Armenia, Maldives.
+   * *Urgent Action:* Addressing urban-rural inequalities, adolescent health, and neonatal intensive care.
 
 ---
 
 ## Quick Start & Execution Guide
 
-### Option 1: Instant Interactive Dashboard (No setup required!)
-Double-click `run_dashboard.bat` or open `dashboard/index.html` directly in any web browser.
-* Toggle between $k=3$, $k=4$, and $k=5$.
-* Compare Euclidean vs. Manhattan distance assignments.
-* Hover over PCA scatter points to inspect national health indicators.
-* Click any country row or scatter dot to open the comprehensive **National Health Scorecard**.
-
-### Option 2: Re-run Full Machine Learning Pipeline via Python CLI
+### Option 1: 1-Click Full-Stack Dynamic App (Recommended)
+Double-click [`run_dynamic_app.bat`](file:///c:/Users/chawl/OneDrive/Desktop/New%20folder/unsupervised%20learning%20project/run_dynamic_app.bat) or execute:
 ```powershell
-# Activate virtual environment
-.\.venv\Scripts\activate
-
-# Run end-to-end pipeline
-python run_pipeline.py
+.\.venv\Scripts\python.exe -m uvicorn app:app --host 127.0.0.1 --port 8000 --reload
 ```
+* Opens the **Light-Themed Web Dashboard** at `http://127.0.0.1:8000`.
+* Interactive Swagger API documentation at `http://127.0.0.1:8000/docs`.
 
-### Option 3: Launch Jupyter Notebook
+### Option 2: 1-Click Master ML Pipeline CLI
 ```powershell
-.\.venv\Scripts\jupyter.exe notebook notebooks\Country_MCH_Segmentation.ipynb
+.\.venv\Scripts\python.exe run_pipeline.py
+```
+Regenerates all datasets, models, validation metrics, and 300-DPI publication figures in seconds.
+
+### Option 3: Regenerate Submission Package & Reports
+```powershell
+.\.venv\Scripts\python.exe generate_pdf_report.py
+.\.venv\Scripts\python.exe generate_presentation.py
+.\.venv\Scripts\python.exe create_submission_zip.py
 ```
 
 ---
 
-## Visualizations Inventory
+## Codebase Map & Directory Structure
 
-| Figure | Description | File Path |
-| :--- | :--- | :--- |
-| **Elbow WCSS Curve** | WCSS and percentage marginal drop across $k \in [2, 6]$ | `outputs/figures/elbow_wcss_curve.png` |
-| **Validation Metrics** | Dual plot comparing Silhouette score and Davies-Bouldin index | `outputs/figures/clustering_validation_metrics.png` |
-| **Silhouette Analysis** | Individual sample silhouette profile distribution for $k=4$ | `outputs/figures/silhouette_analysis_k.png` |
-| **PCA 2D Cluster Biplot** | Scatter projection on PC1 vs PC2 with labeled country exemplars | `outputs/figures/pca_2d_clusters.png` |
-| **PCA Loadings Heatmap** | Feature weighting matrix for PC1, PC2, and PC3 | `outputs/figures/pca_loadings_heatmap.png` |
-| **Cluster Radar Profiles** | Normalized spider chart comparing health typologies | `outputs/figures/cluster_radar_profiles.png` |
-| **Distance Comparison** | Confusion matrix cross-tabulation of Euclidean vs Manhattan clusters | `outputs/figures/distance_metric_comparison.png` |
-| **Feature Boxplots** | Comparative boxplots of 6 key clinical indicators by cluster | `outputs/figures/feature_boxplots_by_cluster.png` |
+```
+unsupervised learning project/
+├── SOURCE_DHS_RAW_DATA.csv             # Raw DHS API extract (Faculty audit)
+├── PREPROCESSED_MCH_CLEAN.csv          # Clean imputed dataset (78 countries, 0 nulls)
+├── PREPROCESSED_MCH_SCALED.csv         # Standardized feature matrix (Z-scores)
+├── DATA_PREPROCESSING_INSPECTION_GUIDE.md # Detailed data & preprocessing documentation
+├── Country_MCH_Segmentation_Project_Report.pdf # Formal PDF report for UMS
+├── Country_MCH_Segmentation_Presentation.pptx # Updated 16:9 presentation deck
+├── PROJECT_LINKS.txt                   # Verified repository and deployment links
+├── 12404505.zip                        # Complete submission ZIP archive
+├── app.py                              # FastAPI dynamic server entrypoint
+├── run_dynamic_app.bat                 # 1-click full-stack launcher
+├── run_dashboard.bat                   # Desktop multi-launcher
+├── run_pipeline.py                     # Master ML execution pipeline
+├── requirements.txt                    # Project dependency manifest
+├── README.md                           # Comprehensive technical report
+├── backend/
+│   └── app.py                          # Dedicated FastAPI backend module
+├── dashboard/                          # Light-Themed Web Analytics Dashboard
+│   ├── index.html                      # UI layout with dynamic tabs & simulator
+│   ├── styles.css                      # Clean light-colored CSS palette
+│   ├── app.js                          # Dynamic API client & Chart.js logic
+│   └── data.js                         # Embedded offline dataset payload
+├── data/
+│   ├── raw/dhs_mch_indicators_raw.csv
+│   └── processed/                      # dhs_mch_clean.csv, dhs_mch_scaled.csv
+├── notebooks/
+│   └── Country_MCH_Segmentation.ipynb  # Interactive reproducible Jupyter Notebook
+├── outputs/
+│   ├── figures/                        # 8 publication-grade 300-DPI charts
+│   └── reports/                        # Validation metrics and stability JSON
+└── src/
+    ├── data_loader.py                  # DHS REST API ingestion & caching
+    ├── preprocessing.py               # Imputation, categorical encoding, scaling
+    ├── clustering.py                   # Euclidean KMeans, Manhattan KMedoids, PCA
+    ├── evaluation.py                   # WCSS, Silhouette, Davies-Bouldin, Calinski
+    ├── stability.py                    # Bootstrap subsampling & seed ARI tests
+    └── visualization.py                # 300-DPI publication plotting engine
+```
 
 ---
 
-## References & Data Citations
-* **USAID DHS Program:** Demographic and Health Surveys Program open REST API (`https://api.dhsprogram.com/`).
-* **World Health Organization (WHO):** Standards for Maternal and Neonatal Care and Global Nutrition Targets 2025.
-* **UNICEF Data:** Child Mortality Estimates (CME Info) & Global Immunization Coverage Database.
-* **Rousseeuw, P. J. (1987):** *Silhouettes: A graphical aid to the interpretation and validation of cluster analysis.* Journal of Computational and Applied Mathematics.
-* **Davies, D. L., & Bouldin, D. W. (1979):** *A cluster separation measure.* IEEE Transactions on Pattern Analysis and Machine Intelligence.
+## Individual Contribution Statement
+* **Student Name:** Mayank
+* **Registration Number:** 12404505
+* **Target Foundation:** Bill & Melinda Gates Foundation
+* **Declaration:** This project was conceived, designed, developed, and evaluated **100% individually as a single-author submission**. All components—including REST API ingestion, statistical preprocessing, mathematical modeling, dynamic FastAPI backend, light-themed web analytics, and formal documentation—were authored by the student.
