@@ -33,10 +33,34 @@ plt.rcParams["axes.linewidth"] = 0.8
 
 CLUSTER_COLORS = ["#D9381E", "#F4A261", "#2A9D8F", "#264653", "#9B5DE5", "#00B4D8"]
 
+def _save_optimized_figure(fig, output_path: str, bbox_inches=None):
+    """Saves figure and optimizes PNG compression to keep deliverables lightweight."""
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    if bbox_inches:
+        fig.savefig(output_path, bbox_inches=bbox_inches)
+    else:
+        fig.savefig(output_path)
+    plt.close(fig)
+    try:
+        from PIL import Image
+        im = Image.open(output_path)
+        if im.mode == "RGBA":
+            bg = Image.new("RGB", im.size, (255, 255, 255))
+            bg.paste(im, mask=im.split()[3])
+            im = bg
+        max_dim = 1600
+        if max(im.size) > max_dim:
+            scale = max_dim / max(im.size)
+            new_size = (int(im.size[0] * scale), int(im.size[1] * scale))
+            im = im.resize(new_size, Image.Resampling.LANCZOS)
+        im_pal = im.quantize(colors=256, method=Image.Quantize.MEDIANCUT)
+        im_pal.save(output_path, "PNG", optimize=True)
+    except Exception as e:
+        logger.debug(f"Image optimization skipped: {e}")
+
 def plot_elbow_wcss(eval_df: pd.DataFrame, output_path: str = "outputs/figures/elbow_wcss_curve.png"):
     """Plots WCSS (Inertia) vs Number of Clusters k."""
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
-    fig, ax1 = plt.subplots(figsize=(8, 5), dpi=300)
+    fig, ax1 = plt.subplots(figsize=(8, 5), dpi=160)
     
     k_vals = eval_df["k"]
     wcss = eval_df["WCSS_Euclidean"]
@@ -60,15 +84,13 @@ def plot_elbow_wcss(eval_df: pd.DataFrame, output_path: str = "outputs/figures/e
     
     plt.title("Elbow Method: WCSS and Marginal Variance Explained across k", fontsize=14, fontweight="bold", pad=15)
     fig.tight_layout()
-    plt.savefig(output_path)
-    plt.close()
+    _save_optimized_figure(fig, output_path)
     logger.info(f"Saved Elbow curve to {output_path}")
 
 def plot_validation_metrics(eval_df: pd.DataFrame, 
                             output_path: str = "outputs/figures/clustering_validation_metrics.png"):
     """Plots Silhouette Scores and Davies-Bouldin Index side by side."""
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5), dpi=300)
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5), dpi=160)
     
     k_vals = eval_df["k"]
     
@@ -99,8 +121,7 @@ def plot_validation_metrics(eval_df: pd.DataFrame,
     ax2.grid(True, linestyle="--", alpha=0.5)
     
     plt.tight_layout()
-    plt.savefig(output_path)
-    plt.close()
+    _save_optimized_figure(fig, output_path)
     logger.info(f"Saved Validation metrics plot to {output_path}")
 
 def plot_silhouette_sample_analysis(X: np.ndarray, 
@@ -108,11 +129,10 @@ def plot_silhouette_sample_analysis(X: np.ndarray,
                                     k: int,
                                     output_path: str = "outputs/figures/silhouette_analysis_k.png"):
     """Plots silhouette coefficient distribution for each individual cluster."""
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
     sample_sil_values = silhouette_samples(X, labels)
     mean_sil = np.mean(sample_sil_values)
     
-    fig, ax = plt.subplots(figsize=(8, 6), dpi=300)
+    fig, ax = plt.subplots(figsize=(8, 6), dpi=160)
     y_lower = 10
     
     for i in range(k):
@@ -135,8 +155,7 @@ def plot_silhouette_sample_analysis(X: np.ndarray,
     ax.grid(True, linestyle=":", alpha=0.5)
     
     plt.tight_layout()
-    plt.savefig(output_path)
-    plt.close()
+    _save_optimized_figure(fig, output_path)
     logger.info(f"Saved Silhouette sample analysis to {output_path}")
 
 def plot_pca_2d_clusters(X_pca: np.ndarray, 
@@ -146,8 +165,7 @@ def plot_pca_2d_clusters(X_pca: np.ndarray,
                          cluster_names: Dict[int, str] = None,
                          output_path: str = "outputs/figures/pca_2d_clusters.png"):
     """Visualizes 2D PCA projection of countries colored by assigned cluster."""
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
-    fig, ax = plt.subplots(figsize=(12, 8), dpi=300)
+    fig, ax = plt.subplots(figsize=(12, 8), dpi=160)
     
     k = len(np.unique(labels))
     exp_var = pca_model.explained_variance_ratio_ * 100
@@ -172,15 +190,13 @@ def plot_pca_2d_clusters(X_pca: np.ndarray,
     ax.grid(True, linestyle="--", alpha=0.5)
     
     plt.tight_layout()
-    plt.savefig(output_path)
-    plt.close()
+    _save_optimized_figure(fig, output_path)
     logger.info(f"Saved 2D PCA cluster plot to {output_path}")
 
 def plot_pca_loadings_heatmap(loadings_df: pd.DataFrame, 
                               output_path: str = "outputs/figures/pca_loadings_heatmap.png"):
     """Visualizes PCA component loadings across the original MCH features."""
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
-    fig, ax = plt.subplots(figsize=(10, 8), dpi=300)
+    fig, ax = plt.subplots(figsize=(10, 8), dpi=160)
     
     # Clean feature names for display
     clean_index = [col.replace("_", " ") for col in loadings_df.index]
@@ -195,8 +211,7 @@ def plot_pca_loadings_heatmap(loadings_df: pd.DataFrame,
     ax.set_ylabel("MCH Survey Indicators", fontsize=11, fontweight="bold")
     
     plt.tight_layout()
-    plt.savefig(output_path)
-    plt.close()
+    _save_optimized_figure(fig, output_path)
     logger.info(f"Saved PCA loadings heatmap to {output_path}")
 
 def plot_cluster_radar_profiles(profile_df: pd.DataFrame, 
@@ -213,7 +228,7 @@ def plot_cluster_radar_profiles(profile_df: pd.DataFrame,
     angles = [n / float(N) * 2 * np.pi for n in range(N)]
     angles += angles[:1]
     
-    fig, ax = plt.subplots(figsize=(9, 9), subplot_kw=dict(polar=True), dpi=300)
+    fig, ax = plt.subplots(figsize=(9, 9), subplot_kw=dict(polar=True), dpi=160)
     ax.set_theta_offset(np.pi / 2)
     ax.set_theta_direction(-1)
     
@@ -234,15 +249,13 @@ def plot_cluster_radar_profiles(profile_df: pd.DataFrame,
     plt.title("Maternal-Child Health Profile Segmentation\nComparative Cluster Radar Chart", size=14, fontweight="bold", y=1.08)
     plt.legend(loc="upper right", bbox_to_anchor=(1.35, 1.1), frameon=True, facecolor="white", edgecolor="#ccc")
     plt.tight_layout()
-    plt.savefig(output_path, bbox_inches="tight")
-    plt.close()
+    _save_optimized_figure(fig, output_path, bbox_inches="tight")
     logger.info(f"Saved Cluster radar chart to {output_path}")
 
 def plot_distance_metric_comparison(contingency_matrix: pd.DataFrame, 
                                     output_path: str = "outputs/figures/distance_metric_comparison.png"):
     """Visualizes cross-tabulation heatmap between Euclidean K-Means and Manhattan K-Medoids."""
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
-    fig, ax = plt.subplots(figsize=(8, 6), dpi=300)
+    fig, ax = plt.subplots(figsize=(8, 6), dpi=160)
     
     sns.heatmap(contingency_matrix, annot=True, fmt="d", cmap="YlGnBu", cbar=True, ax=ax)
     ax.set_title("Cluster Congruence: Euclidean K-Means vs. Manhattan K-Medoids", fontsize=13, fontweight="bold")
@@ -250,8 +263,7 @@ def plot_distance_metric_comparison(contingency_matrix: pd.DataFrame,
     ax.set_ylabel("Euclidean K-Means Assigned Cluster", fontsize=11, fontweight="bold")
     
     plt.tight_layout()
-    plt.savefig(output_path)
-    plt.close()
+    _save_optimized_figure(fig, output_path)
     logger.info(f"Saved distance metric comparison to {output_path}")
 
 def plot_feature_boxplots_by_cluster(clean_df: pd.DataFrame, 
@@ -260,7 +272,6 @@ def plot_feature_boxplots_by_cluster(clean_df: pd.DataFrame,
                                      cluster_names: Dict[int, str] = None,
                                      output_path: str = "outputs/figures/feature_boxplots_by_cluster.png"):
     """Plots comparative boxplots of key health indicators across discovered clusters."""
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
     plot_df = clean_df.copy()
     plot_df["Cluster"] = [cluster_names[l] if cluster_names and l in cluster_names else f"Cluster {l+1}" for l in labels]
     
@@ -268,7 +279,7 @@ def plot_feature_boxplots_by_cluster(clean_df: pd.DataFrame,
     ncols = 3
     nrows = int(np.ceil(n_feats / ncols))
     
-    fig, axes = plt.subplots(nrows, ncols, figsize=(15, 4 * nrows), dpi=300)
+    fig, axes = plt.subplots(nrows, ncols, figsize=(15, 4 * nrows), dpi=160)
     axes = axes.flatten()
     
     for i, feat in enumerate(key_features):
@@ -285,6 +296,5 @@ def plot_feature_boxplots_by_cluster(clean_df: pd.DataFrame,
         
     plt.suptitle("Key Maternal-Child Health Indicators by Discovered Cluster", fontsize=15, fontweight="bold", y=1.00)
     plt.tight_layout()
-    plt.savefig(output_path, bbox_inches="tight")
-    plt.close()
+    _save_optimized_figure(fig, output_path, bbox_inches="tight")
     logger.info(f"Saved feature boxplots to {output_path}")
